@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio | E C L I P S E</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<script src="carrito.js"></script>
+
+<body>
+
+<header>
+  <h1 class="titulo"> E C L I P S E </h1>
+  <nav class="menu">
+    <a href="index.html" class="link-menu activo">Inicio</a>
+    <a href="Colección nueva.html" class="link-menu">Colección Nueva</a>
+    <a href="anillos.html" class="link-menu">Anillos</a>
+    <a href="aretes.html" class="link-menu">Aretes</a>
+    <a href="cadenas.html" class="link-menu">Cadenas</a>
+    <a href="earcuffs.html" class="link-menu">Earcuffs</a>
+    <a href="playa.html" class="link-menu">Playa</a>
+    <a href="pulseras.html" class="link-menu">Pulseras</a>
+    <a href="contacto.html" class="link-menu">Contacto</a>
+    <a href="sobre-nosotras.html" class="link-menu">Sobre nosotras</a>
+    <a href="carrito.html" class="link-menu"><i class="fas fa-shopping-cart"></i> </a>
+  </nav>
+</header>
+
+  <!-- Carrusel Publicitario -->
+  <div class="carousel-container">
+    <div class="carousel-slide fade">
+      <img src="img/2.png" alt="Publicidad 1">
+    </div>
+    <div class="carousel-slide fade">
+      <img src="img/3.png" alt="Publicidad 2">
+    </div>
+        <div class="carousel-slide fade">
+      <img src="img/4.png" alt="Publicidad 3">
+    </div>
+    <a class="prev">❮</a>
+    <a class="next">❯</a>
+
+    <div class="carousel-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+
+<div class="imagen-promocional">
+  <img src="img/MODO DESCUENTO.png.png" alt="Colección nueva Eclipse" />
+</div>
+
+
+
+  <a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
+    <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+  </a>
+
+
+  <script>
+    const currentPage = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll(".link-menu");
+    links.forEach(link => {
+      if (link.getAttribute("href") === currentPage || (currentPage === "" && link.getAttribute("href") === "index.html")) {
+        link.classList.add("activo");
+      }
+    });
+
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".dot");
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? "block" : "none";
+        dots[i].classList.toggle("active", i === index);
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    next.addEventListener("click", nextSlide);
+    prev.addEventListener("click", prevSlide);
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        slideIndex = i;
+        showSlide(slideIndex);
+      });
+    });
+
+    showSlide(slideIndex);
+    setInterval(nextSlide, 3000);
+  </script>
+<a href="carrito.html" class="carrito-float" title="Ver carrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="contador-carrito">0</span>
+</a>
+
+<script>
+  function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    const contador = document.getElementById("contador-carrito");
+    if (contador) {
+      contador.textContent = totalItems;
+    }
+  }
+
+  actualizarContadorCarrito();
+</script>
+
+</body>
+</html>

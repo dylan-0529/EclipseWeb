@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anillos | E C L I P S E</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="carrito.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1 class="titulo"> E C L I P S E </h1>
+  <nav class="menu">
+    <a href="index.html" class="link-menu">Inicio</a>
+    <a href="Colección nueva.html" class="link-menu">Colección Nueva</a>
+    <a href="anillos.html" class="link-menu activo">Anillos</a>
+    <a href="aretes.html" class="link-menu">Aretes</a>
+    <a href="cadenas.html" class="link-menu">Cadenas</a>
+    <a href="earcuffs.html" class="link-menu">Earcuffs</a>
+    <a href="playa.html" class="link-menu">Playa</a>
+    <a href="pulseras.html" class="link-menu">Pulseras</a>
+    <a href="contacto.html" class="link-menu">Contacto</a>
+    <a href="sobre-nosotras.html" class="link-menu">Sobre nosotras</a>
+    <a href="carrito.html" class="link-menu">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+  </nav>
+</header>
+
+<section class="categoria">
+  <h2 class="subtitulo">Anillos</h2>
+
+  <div class="productos-grid">
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Ball Dorado.PNG" alt="Anillo Ball Dorado" />
+  <h3>Anillo Ball Dorado</h3>
+  <p>$25.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Ball Dorado', 25000, 'CARPETA ANILLOS/Anillo Ball Dorado.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Coquette.PNG" alt="Anillo Coquette" />
+  <h3>Anillo Coquette</h3>
+  <p>$20.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Coquette', 20000, 'CARPETA ANILLOS/Anillo Coquette.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Corazones.PNG" alt="Anillo Corazones" />
+  <h3>Anillo Corazones</h3>
+  <p>$22.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Corazones', 22000, 'CARPETA ANILLOS/Anillo Corazones.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Destino.PNG" alt="Anillo Destino" />
+  <h3>Anillo Destino</h3>
+  <p>$20.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Destino', 20000, 'CARPETA ANILLOS/Anillo Destino.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Instinto Dorado.PNG" alt="Anillo Instinto Dorado" />
+  <h3>Anillo Instinto Dorado</h3>
+  <p>$22.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Instinto Dorado', 22000, 'CARPETA ANILLOS/Anillo Instinto Dorado.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Lazos.PNG" alt="Anillo Lazos" />
+  <h3>Anillo Lazos</h3>
+  <p>$18.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Lazos', 18000, 'CARPETA ANILLOS/Anillo Lazos.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Nudo Plateado.PNG" alt="Anillo Nudo Plateado" />
+  <h3>Anillo Nudo Plateado</h3>
+  <p>$22.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Nudo Plateado', 22000, 'CARPETA ANILLOS/Anillo Nudo Plateado.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA ANILLOS/Anillo Promesa.PNG" alt="Anillo Promesa" />
+  <h3>Anillo Promesa</h3>
+  <p>$18.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Anillo Promesa', 18000, 'CARPETA ANILLOS/Anillo Promesa.PNG')">Agregar al carrito</button>
+</div>
+
+  </div>
+</section>
+
+<a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
+  <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+</a>
+
+<a href="carrito.html" class="carrito-float" title="Ver carrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="contador-carrito">0</span>
+</a>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  });
+
+  const currentPage = window.location.pathname.split("/").pop();
+  const links = document.querySelectorAll(".link-menu");
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("activo");
+    }
+  });
+
+  function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
+      el.textContent = totalItems;
+    });
+  }
+
+  actualizarContadorCarrito();
+</script>
+
+</body>
+</html>

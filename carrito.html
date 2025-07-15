@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito | E C L I P S E</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="carrito.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1 class="titulo"> E C L I P S E </h1>
+  <nav class="menu">
+    <a href="index.html" class="link-menu">Inicio</a>
+    <a href="Colección nueva.html" class="link-menu">Colección Nueva</a>
+    <a href="anillos.html" class="link-menu">Anillos</a>
+    <a href="aretes.html" class="link-menu">Aretes</a>
+    <a href="cadenas.html" class="link-menu">Cadenas</a>
+    <a href="earcuffs.html" class="link-menu">Earcuffs</a>
+    <a href="playa.html" class="link-menu">Playa</a>
+    <a href="pulseras.html" class="link-menu">Pulseras</a>
+    <a href="contacto.html" class="link-menu">Contacto</a>
+    <a href="sobre-nosotras.html" class="link-menu">Sobre nosotras</a>
+    <a href="carrito.html" class="link-menu activo"><i class="fas fa-shopping-cart"></i></a>
+  </nav>
+</header>
+
+<main class="categoria">
+
+  <!-- Imagen instructiva del proceso de compra -->
+  <div class="instruccion-compra" style="text-align:center; margin: 40px 0;">
+    <h3>¿Cómo comprar?</h3>
+    <img src="img/ECLIPSE ACCESORIOS.png.png" alt="Proceso de Compra" style="max-width: 100%; height: auto; aspect-ratio: 16/9;">
+  </div>
+
+  <!-- Carrito dinámico -->
+  <div id="cart"></div>
+
+  <!-- Línea final por estética -->
+  <hr class="linea-final-carrito">
+
+</main>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
+  <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+</a>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    if (typeof renderCart === 'function') {
+      renderCart('cart');
+    }
+
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  });
+</script>
+
+</body>
+</html>

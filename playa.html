@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Playa | E C L I P S E</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="carrito.js" defer></script>
+</head>
+<body>
+
+<header>
+  <h1 class="titulo"> E C L I P S E </h1>
+  <nav class="menu">
+    <a href="index.html" class="link-menu">Inicio</a>
+    <a href="Colección nueva.html" class="link-menu">Colección Nueva</a>
+    <a href="anillos.html" class="link-menu">Anillos</a>
+    <a href="aretes.html" class="link-menu">Aretes</a>
+    <a href="cadenas.html" class="link-menu">Cadenas</a>
+    <a href="earcuffs.html" class="link-menu">Earcuffs</a>
+    <a href="playa.html" class="link-menu activo">Playa</a>
+    <a href="pulseras.html" class="link-menu">Pulseras</a>
+    <a href="contacto.html" class="link-menu">Contacto</a>
+    <a href="sobre-nosotras.html" class="link-menu">Sobre nosotras</a>
+    <a href="carrito.html" class="link-menu"><i class="fas fa-shopping-cart"></i></a>
+  </nav>
+</header>
+
+<section class="categoria">
+  <h2 class="subtitulo">Colección Playa</h2>
+
+ <div class="productos-grid">
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker Conchas.PNG" alt="Choker Conchas" />
+  <h3>Choker Conchas</h3>
+  <p>$15.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker Conchas', 15000, 'CARPETA PLAYA/Choker Conchas.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker MoStar.PNG" alt="Choker MoStar" />
+  <h3>Choker MoStar</h3>
+  <p>$16.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker MoStar', 16000, 'CARPETA PLAYA/Choker MoStar.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker Sunny.PNG" alt="Choker Sunny" />
+  <h3>Choker Sunny</h3>
+  <p>$16.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker Sunny', 16000, 'CARPETA PLAYA/Choker Sunny.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker Playa.PNG" alt="Choker Playa" />
+  <h3>Choker Playa</h3>
+  <p>$18.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker Playa', 18000, 'CARPETA PLAYA/Choker Playa.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker Playa (2).PNG" alt="Choker Arena" />
+  <h3>Choker Arena</h3>
+  <p>$18.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker Arena', 18000, 'CARPETA PLAYA/Choker Playa (2).PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Choker Playa (3).PNG" alt="Choker Sol" />
+  <h3>Choker Sol</h3>
+  <p>$18.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Choker Sol', 18000, 'CARPETA PLAYA/Choker Playa (3).PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Cuelga gafas MoStar.PNG" alt="Cuelga gafas MoStar" />
+  <h3>Cuelga Gafas MoStar</h3>
+  <p>$22.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Cuelga Gafas MoStar', 22000, 'CARPETA PLAYA/Cuelga gafas MoStar.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Hilo Corazones.PNG" alt="Hilo Corazones" />
+  <h3>Hilo Corazones</h3>
+  <p>$15.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Hilo Corazones', 15000, 'CARPETA PLAYA/Hilo Corazones.PNG')">Agregar al carrito</button>
+</div>
+
+<div class="producto">
+  <img src="CARPETA PLAYA/Hilo Estrellas.PNG" alt="Hilo Estrellas" />
+  <h3>Hilo Estrellas</h3>
+  <p>$15.000</p>
+  <button class="boton-carrito-elegante" onclick="addToCart('Hilo Estrellas', 15000, 'CARPETA PLAYA/Hilo Estrellas.PNG')">Agregar al carrito</button> 
+</div>
+
+
+  </div>
+
+
+</section>
+
+<a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
+  <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+</a>
+
+<a href="carrito.html" class="carrito-float" title="Ver carrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="contador-carrito">0</span>
+</a>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  });
+
+  const currentPage = window.location.pathname.split("/").pop();
+  const links = document.querySelectorAll(".link-menu");
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("activo");
+    }
+  });
+
+  function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    const contador = document.getElementById("contador-carrito");
+    if (contador) {
+      contador.textContent = totalItems;
+    }
+  }
+
+  actualizarContadorCarrito();
+</script>
+
+</body>
+</html>
