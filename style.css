@@ -627,7 +627,8 @@ main, .categoria, .nosotras, .fondo, .contacto {
   font-weight: bold;
   font-size: 0.75rem;
   text-decoration: none;
-  border: none; /* sin borde */
+  border: none;
+  margin-top: 12px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
