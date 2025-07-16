@@ -1,4 +1,3 @@
-// Agrega producto al carrito (con imagen)
 function addToCart(nombre, precio, imagen) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -14,7 +13,6 @@ function addToCart(nombre, precio, imagen) {
   alert(`${nombre} agregado al carrito.`);
 }
 
-// Renderiza carrito en carrito.html
 function renderCart(containerId) {
   const el = document.getElementById(containerId);
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -27,7 +25,7 @@ function renderCart(containerId) {
   }
 
   let total = 0;
-let html = `
+  let html = `
   <table style="width:100%; border-collapse:collapse; margin-top:30px;">
     <thead>
       <tr style="border-bottom: 2px solid #ccc;">
@@ -37,7 +35,7 @@ let html = `
         <th style="padding: 10px; text-align: center;">Precio</th>
       </tr>
     </thead>
-      <tbody>`;
+    <tbody>`;
 
   carrito.forEach((item, i) => {
     total += item.precio * item.cantidad;
@@ -58,30 +56,27 @@ let html = `
   <td style="padding: 10px; text-align: center;">
     $${(item.precio * item.cantidad).toLocaleString()}
   </td>
-      </tr>`;
+</tr>`;
   });
 
   html += `
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
-    <!-- Línea final estética -->
-    <hr style="border: 1px solid #ccc; margin-top: 30px;">
+  <!-- Total -->
+  <h3 style="margin-top: 30px; text-align:right;">Total: $${total.toLocaleString()}</h3>
 
-    <!-- Total -->
-    <h3 style="margin-top: 20px; text-align:right;">Total: $${total.toLocaleString()}</h3>
-
-    <!-- Botón de WhatsApp -->
-    <div style="text-align:center; margin-top: 30px;">
-      <button onclick="sendOrderToWhatsApp()" class="boton-carrito-elegante">
-        <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
-      </button>
-    </div>`;
+  <!-- Botón de WhatsApp -->
+  <div style="text-align:center; margin: 40px 0;">
+    <button onclick="sendOrderToWhatsApp()" class="boton-carrito-elegante" style="padding: 16px 32px; font-size: 1.1rem;">
+      <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+    </button>
+  </div>`;
 
   el.innerHTML = html;
 }
 
-// Cambia la cantidad de un producto
+// Cambiar cantidad de un producto
 function changeQuantity(index, delta) {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   if (!carrito[index]) return;
@@ -97,7 +92,7 @@ function changeQuantity(index, delta) {
   updateCartCount();
 }
 
-// Elimina producto completamente
+// Eliminar producto completamente
 function removeFromCart(index) {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   carrito.splice(index, 1);
@@ -127,7 +122,7 @@ function sendOrderToWhatsApp() {
   const url = `https://wa.me/${numero}?text=${mensaje}`;
   window.open(url, "_blank");
 
-  // No borra el carrito
+  // No se borra el carrito
 }
 
 // Actualiza el contador flotante
@@ -139,7 +134,7 @@ function updateCartCount() {
   if (contador) {
     contador.textContent = totalCantidad;
     contador.classList.remove("pop");
-    void contador.offsetWidth; // Reflow
+    void contador.offsetWidth;
     contador.classList.add("pop");
   }
 }
