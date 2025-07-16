@@ -436,6 +436,15 @@ main, .categoria, .nosotras, .fondo, .contacto {
   .caja-superpuesta {
     padding: 20px;
   }
+
+  .boton-carrito-elegante {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    margin-top: 16px;
+  }
 }
 
 /* flechitas animadas */
