@@ -8,6 +8,26 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="carrito.js" defer></script>
+  <style>
+    .boton-carrito-elegante {
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+
+    /* Eliminar línea duplicada */
+    .linea-final-carrito {
+      display: none;
+    }
+
+    /* Responsive para botones del carrito */
+    @media (max-width: 600px) {
+      .boton-cantidad {
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+        margin: 3px !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,22 +49,13 @@
 </header>
 
 <main class="categoria">
-
-  <!-- Imagen instructiva del proceso de compra -->
-  <div class="instruccion-compra" style="text-align:center; margin: 40px 0;">
-    <h3>¿Cómo comprar?</h3>
+  <div style="text-align:center; margin: 40px 0;">
     <img src="img/¿Cómo comprar página web ECLIPSE_.png" alt="Proceso de Compra" style="max-width: 100%; height: auto; aspect-ratio: 16/9;">
   </div>
 
-  <!-- Carrito dinámico -->
   <div id="cart"></div>
-
-  <!-- Línea final por estética -->
-  <hr class="linea-final-carrito">
-
 </main>
 
-<!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float">
   <img src="img/whatsapp-icon.png" alt="WhatsApp" />
 </a>
