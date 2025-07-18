@@ -118,11 +118,11 @@ function sendOrderToWhatsApp() {
   const total = carrito.reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
   mensaje += `%0A*Total:* $${total.toLocaleString()}`;
 
-  const numero = "573001234567"; // Cambia por tu número real
+  const numero = "573003578712"; // Cambia por tu número real
   const url = `https://wa.me/${numero}?text=${mensaje}`;
   window.open(url, "_blank");
 
-  // No se borra el carrito
+ 
 }
 
 // Actualiza el contador flotante
