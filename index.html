@@ -7,6 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- Favicon básico -->
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+<!-- Icono para navegadores modernos -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+<!-- Icono para Apple -->
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <script src="carrito.js"></script>
 
@@ -126,13 +135,15 @@
   function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    const contador = document.getElementById("contador-carrito");
-    if (contador) {
-      contador.textContent = totalItems;
-    }
+    document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
+      el.textContent = totalItems;
+      el.classList.remove("pop");
+      void el.offsetWidth;
+      el.classList.add("pop");
+    });
   }
 
-  actualizarContadorCarrito();
+  document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
 </script>
 
 </body>
