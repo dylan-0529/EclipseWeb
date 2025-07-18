@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="carrito.js" defer></script>
+    <!-- Favicon básico -->
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+<!-- Icono para navegadores modernos -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+<!-- Icono para Apple -->
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <body>
 
@@ -102,7 +111,44 @@
   <button class="boton-carrito-elegante" onclick="addToCart('Pulsera Corazón', 18000, 'CARPETA PULSERAS/Pulsera corazón.PNG')">Agregar al carrito</button>
 </div>
 
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/PULSERAS/Brazalete Circulo.PNG" alt="Brazalete Circulo" />
+      <h3>Brazalete Circulo</h3>
+      <p>$25.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Brazalete Circulo', 25000, 'eclipse-nuevo/PULSERAS/Brazalete Circulo.PNG')">Agregar al carrito</button>
+    </div>
 
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/PULSERAS/Brazalete Nudo.PNG" alt="Brazalete Nudo" />
+      <h3>Brazalete Nudo</h3>
+      <p>$28.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Brazalete Nudo', 28000, 'eclipse-nuevo/PULSERAS/Brazalete Nudo.PNG')">Agregar al carrito</button>
+    </div>
+
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/PULSERAS/Pulsera Circones Dorada.PNG" alt="Pulsera Circones Dorada" />
+      <h3>Pulsera Circones Dorada</h3>
+      <p>$25.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Pulsera Circones Dorada', 25000, 'eclipse-nuevo/PULSERAS/Pulsera Circones Dorada.PNG')">Agregar al carrito</button>
+    </div>
+
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/PULSERAS/Pulsera Circulo.PNG" alt="Pulsera Circulo" />
+      <h3>Pulsera Circulo</h3>
+      <p>$32.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Pulsera Circulo', 32000, 'eclipse-nuevo/PULSERAS/Pulsera Circulo.PNG')">Agregar al carrito</button>
+    </div>
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/PULSERAS/Pulsera Sedusa.PNG" alt="Pulsera Sedusa" />
+      <h3>Pulsera Pulsera Sedusa</h3>
+      <p>$22.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Pulsera Sedusa', 22000, 'eclipse-nuevo/PULSERAS/Pulsera Sedusa.PNG')">Agregar al carrito</button>
+    </div>
   </div>
 
 
@@ -134,13 +180,15 @@
   function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    const contador = document.getElementById("contador-carrito");
-    if (contador) {
-      contador.textContent = totalItems;
-    }
+    document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
+      el.textContent = totalItems;
+      el.classList.remove("pop");
+      void el.offsetWidth;
+      el.classList.add("pop");
+    });
   }
 
-  actualizarContadorCarrito();
+  document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
 </script>
 
 </body>
