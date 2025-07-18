@@ -130,7 +130,7 @@ function updateCartCount() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
-  const contador = document.getElementById("cart-count");
+  const contador = document.getElementById("contador-carrito");
   if (contador) {
     contador.textContent = totalCantidad;
     contador.classList.remove("pop");
@@ -138,6 +138,7 @@ function updateCartCount() {
     contador.classList.add("pop");
   }
 }
+
 
 // Ejecutar contador al cargar
 document.addEventListener("DOMContentLoaded", () => {
