@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src="carrito.js" defer></script>
+    <!-- Favicon básico -->
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+<!-- Icono para navegadores modernos -->
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+
+<!-- Icono para Apple -->
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 <body>
 
@@ -146,7 +155,37 @@
   <button class="boton-carrito-elegante" onclick="addToCart('Cadena Corazón', 22000, 'CARPETA CADENAS/Cadena corazón.PNG')">Agregar al carrito</button>
 </div>
 
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/CADENAS/Cadena Circulo (2).PNG" alt="Cadena Circulo" />
+      <h3>Cadena Circulo</h3>
+      <p>$34.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Cadena Circulo', 34000, 'eclipse-nuevo/CADENAS/Cadena Circulo (2).PNG')">Agregar al carrito</button>
+    </div>
+    
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/CADENAS/Cadena Flor.PNG" alt="Cadena Flor" />
+      <h3>Cadena Flor</h3>
+      <p>$28.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Cadena Flor', 28000, 'eclipse-nuevo/CADENAS/Cadena Flor.PNG')">Agregar al carrito</button>
+    </div>
 
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/CADENAS/Cadena Flores.PNG" alt="Cadena Flores" />
+      <h3>Cadena Flores Cuadrado</h3>
+      <p>$26.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Cadena Flores', 26000, 'eclipse-nuevo/CADENAS/Cadena Flores.PNG')">Agregar al carrito</button>
+    </div>
+
+     <div class="producto nuevo">
+      <span class="etiqueta-nuevo">NEW</span>
+      <img src="eclipse-nuevo/CADENAS/Cadena Placa Sol.PNG" alt="Cadena Placa Sol" />
+      <h3>Cadena Placa Sol</h3>
+      <p>$26.000</p>
+      <button class="boton-carrito-elegante" onclick="addToCart('Cadena Placa Sol', 26000, 'eclipse-nuevo/CADENAS/Cadena Placa Sol.PNG')">Agregar al carrito</button>
+    </div>
 
   </div>
 </section>
@@ -179,10 +218,13 @@
     const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
     document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
       el.textContent = totalItems;
+      el.classList.remove("pop");
+      void el.offsetWidth;
+      el.classList.add("pop");
     });
   }
 
-  actualizarContadorCarrito();
+  document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
 </script>
 
 </body>
