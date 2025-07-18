@@ -153,6 +153,17 @@ main, .categoria, .nosotras, .fondo, .contacto {
   color: #777;
   font-weight: bold;
 }
+/* Permitir que los nuevos productos sigan la misma animación */
+.producto.nuevo:nth-child(11) { animation-delay: 1.1s; }
+.producto.nuevo:nth-child(12) { animation-delay: 1.2s; }
+.producto.nuevo:nth-child(13) { animation-delay: 1.3s; }
+.producto.nuevo:nth-child(14) { animation-delay: 1.4s; }
+.producto.nuevo:nth-child(15) { animation-delay: 1.5s; }
+.producto.nuevo:nth-child(16) { animation-delay: 1.6s; }
+.producto.nuevo:nth-child(17) { animation-delay: 1.7s; }
+.producto.nuevo:nth-child(18) { animation-delay: 1.8s; }
+
+
 
 .whatsapp-float {
   position: fixed;
@@ -636,7 +647,7 @@ main, .categoria, .nosotras, .fondo, .contacto {
   font-weight: bold;
   font-size: 0.75rem;
   text-decoration: none;
-  border: none;
+  border: none; 
   margin-top: 12px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -723,7 +734,7 @@ main, .categoria, .nosotras, .fondo, .contacto {
 }
 
 .boton-cantidad i {
-  pointer-events: none; /* Para que el clic lo reciba el botón, no el ícono */
+  pointer-events: none; 
 }
 
 .cantidad-control {
@@ -765,11 +776,12 @@ tfoot {
   border-top: 1px solid #ccc;
 }
 
+/* Ajuste solo para .nosotras */
 .nosotras {
-  margin-top: 20px; 
+  margin-top: 20px; /* antes era 140px */
 }
 
-
+/* Animación suave de entrada */
 .animate {
   opacity: 0;
   transform: translateY(20px);
@@ -781,4 +793,30 @@ tfoot {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+/* Etiqueta diagonal NEW */
+.etiqueta-nuevo {
+  position: absolute;
+  top: 10px;
+  right: -30px;
+  background: red;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 5px 45px;
+  transform: rotate(45deg);
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+
+/* Asegurarse que los productos tengan posición relativa para colocar la etiqueta */
+.producto {
+  position: relative;
+  overflow: hidden;
 }
