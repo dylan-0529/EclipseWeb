@@ -44,18 +44,34 @@
 <main class="categoria">
   <h2 class="subtitulo">NEW</h2>
 
-  <h3 class="subseccion">Set</h3>
+<h3 class="subseccion">Set</h3>
 
-  <div class="productos-grid">
-    <div class="producto nuevo">
-      <img src="LO MÁS RECIENTE ECLIPSE/Set nuevo.PNG" alt="Set flor" />
-      <h3>Set flor</h3>
-      <p>CADENA $22.000
-         ARETES $20.000
-         BRAZALETE $20.000
-         ANILLO AGOTADO</p>
-      <button class="boton-carrito-elegante" onclick="addToCart('Set flor', 0, 'LO MÁS RECIENTE ECLIPSE/Set nuevo.PNG')">Agregar al carrito</button>
+<div class="producto-set">
+  <div class="producto-set-imagen">
+    <img src="LO MÁS RECIENTE ECLIPSE/Setnuevo.png" alt="Set flor" />
+  </div>
+  <div class="producto-set-detalles">
+    <h3>Set flor</h3>
+
+    <div class="opciones-set">
+      <label>
+        <input type="checkbox" class="item-set" value="22000" data-nombre="Cadena"> Cadena ($22.000)
+      </label><br>
+      <label>
+        <input type="checkbox" class="item-set" value="20000" data-nombre="Aretes"> Aretes ($20.000)
+      </label><br>
+      <label>
+        <input type="checkbox" class="item-set" value="20000" data-nombre="Brazalete"> Brazalete ($20.000)
+      </label>
     </div>
+
+    <p class="precio-set">Total: $0</p>
+
+    <button class="boton-carrito-elegante" onclick="addSetToCart(this, 'Set flor', 'LO MÁS RECIENTE ECLIPSE/Setnuevo.png')">
+      Agregar al carrito
+    </button>
+  </div>
+</div>
 
     
   <h3 class="subseccion">Anillos</h3>
@@ -284,30 +300,88 @@
 </a>
 
 <script>
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector("header");
-    header.classList.toggle("scrolled", window.scrollY > 50);
-  });
-
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll(".link-menu").forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("activo");
-    }
-  });
-
-  function actualizarContadorCarrito() {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
-      el.textContent = totalItems;
-      el.classList.remove("pop");
-      void el.offsetWidth;
-      el.classList.add("pop");
+    // Se mantiene el script del header y del contador del carrito
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      header.classList.toggle("scrolled", window.scrollY > 50);
     });
-  }
+    
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".link-menu").forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("activo");
+      }
+    });
+    
+    function actualizarContadorCarrito() {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+      document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
+        el.textContent = totalItems;
+        el.classList.remove("pop");
+        void el.offsetWidth;
+        el.classList.add("pop");
+      });
+    }
+    
+    document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
 
-  document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+    // Lógica para el set (solucionando el problema)
+    const setContainer = document.querySelector('.producto-set');
+    const checkboxes = setContainer.querySelectorAll('.item-set');
+    const precioTexto = setContainer.querySelector('.precio-set');
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        let total = 0;
+        checkboxes.forEach(c => {
+          if (c.checked) {
+            total += parseInt(c.value);
+          }
+        });
+        precioTexto.textContent = "Total: $" + total.toLocaleString('es-CO');
+      });
+    });
+
+    // La función `addSetToCart` ahora usa el selector correcto
+    function addSetToCart(button, setName, image) {
+      const setContainer = button.closest('.producto-set');
+      const checkboxes = setContainer.querySelectorAll('.item-set:checked');
+
+      if (checkboxes.length === 0) {
+        alert("Por favor selecciona al menos un producto del set.");
+        return;
+      }
+
+      checkboxes.forEach(cb => {
+        const nombre = cb.dataset.nombre;
+        const precio = parseInt(cb.value);
+        addToCart(nombre, precio, image); 
+      });
+
+      alert("Productos agregados al carrito con éxito ✅");
+    }
+
+    // Esta función debe existir en tu archivo `carrito.js`
+    function addToCart(nombre, precio, imagen) {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      
+      const itemExistente = carrito.find(item => item.nombre === nombre);
+      
+      if (itemExistente) {
+        itemExistente.cantidad++;
+      } else {
+        carrito.push({
+          nombre: nombre,
+          precio: precio,
+          imagen: imagen,
+          cantidad: 1
+        });
+      }
+      
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarContadorCarrito();
+    }
 </script>
 </body>
 </html>
