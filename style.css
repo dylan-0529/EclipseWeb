@@ -910,3 +910,20 @@ tfoot {
   }
 }
 
+.etiqueta-soldout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background: #e53935; /* Un color rojo llamativo */
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem; /* Un poco más grande para que se note */
+    padding: 8px 60px; /* Ancho suficiente para atravesar la imagen */
+    text-align: center;
+    letter-spacing: 2px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    pointer-events: none; /* Para que el cursor no se vea afectado por la etiqueta */
+}
+
