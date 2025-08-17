@@ -820,3 +820,65 @@ tfoot {
   position: relative;
   overflow: hidden;
 }
+/* Contenedor general del set */
+.producto-set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 800px; /* para que no ocupe toda la pantalla */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: #fff;
+}
+
+/* Imagen */
+.producto-set-imagen img {
+  width: 280px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Detalles */
+.producto-set-detalles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.producto-set-detalles h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.opciones-set {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 0.95rem;
+}
+
+.opciones-set label {
+  display: block;
+  margin: 6px 0;
+}
+
+.precio-set {
+  font-weight: bold;
+  margin: 12px 0;
+  font-size: 1rem;
+}
+
+/* Botón en mitad */
+.producto-set-detalles .boton-carrito-elegante {
+  align-self: center;
+  margin-top: 10px;
+}
+
