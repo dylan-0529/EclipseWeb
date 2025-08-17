@@ -339,24 +339,25 @@
       });
     });
 
-    // La función `addSetToCart` ahora usa el selector correcto
-    function addSetToCart(button, setName, image) {
-      const setContainer = button.closest('.producto-set');
-      const checkboxes = setContainer.querySelectorAll('.item-set:checked');
+// La función `addSetToCart` ahora usa el selector correcto
+function addSetToCart(button) {
+    const setContainer = button.closest('.producto-set');
+    const checkboxes = setContainer.querySelectorAll('.item-set:checked');
+    const imagePath = setContainer.querySelector('img').src;
+    const productName = setContainer.querySelector('h3').textContent;
 
-      if (checkboxes.length === 0) {
-        alert("Por favor selecciona al menos un producto del set.");
+    if (checkboxes.length === 0) {
+        alert("Por favor selecciona al menos un producto.");
         return;
-      }
+    }
 
-      checkboxes.forEach(cb => {
+    checkboxes.forEach(cb => {
         const nombre = cb.dataset.nombre;
         const precio = parseInt(cb.value);
-        addToCart(nombre, precio, image); 
-      });
+        addToCart(nombre, precio, imagePath);
+    });
 
-      alert("Productos agregados al carrito con éxito ✅");
-    }
+}
 
     // Esta función debe existir en tu archivo `carrito.js`
     function addToCart(nombre, precio, imagen) {
@@ -381,6 +382,7 @@
 </script>
 </body>
 </html>
+
 
 
 
