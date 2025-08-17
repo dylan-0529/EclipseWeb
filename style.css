@@ -846,7 +846,8 @@ tfoot {
 
 /* Imagen */
 .producto-set-imagen img {
-    max-width: 100%;
+    max-width: 300px; /* Limita el ancho máximo en computadores */
+    width: 100%; /* Sigue siendo responsive en móvil */
     height: auto;
     display: block;
     border-radius: 10px;
@@ -908,3 +909,4 @@ tfoot {
     padding: 10px;
   }
 }
+
