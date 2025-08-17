@@ -133,7 +133,8 @@ main, .categoria, .nosotras, .fondo, .contacto {
 
 
 .producto:hover {
-  transform: translateY(-5px);
+    transform: scale(1.03); /* Un zoom ligero */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
 }
 
 .producto img {
@@ -817,30 +818,38 @@ tfoot {
 
 /* Asegurarse que los productos tengan posición relativa para colocar la etiqueta */
 .producto {
-  position: relative;
-  overflow: hidden;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Agregué box-shadow a la transición */
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
 }
+
 /* Contenedor general del set */
 .producto-set {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  max-width: 800px; /* para que no ocupe toda la pantalla */
+  max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #eee;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   background: #fff;
+  /* Ahora el set también tendrá el mismo efecto de realce */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Imagen */
 .producto-set-imagen img {
-  width: 280px;
-  height: auto;
-  border-radius: 12px;
-  object-fit: contain;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
 }
 
 /* Detalles */
@@ -881,4 +890,21 @@ tfoot {
   align-self: center;
   margin-top: 10px;
 }
+.producto-set:hover {
+    transform: scale(1.03); /* El mismo zoom que los demás productos */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* La misma sombra */
+}
 
+@media (max-width: 768px) {
+  .producto-set {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    text-align: center; /* Centra el texto */
+    padding: 15px;
+    gap: 15px; /* Reduce el espacio entre elementos */
+  }
+
+ .opciones-set {
+    width: 100%; /* El contenedor de los checkboxes ocupará todo el ancho */
+    padding: 10px;
+  }
+}
