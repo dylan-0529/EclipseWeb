@@ -799,21 +799,23 @@ tfoot {
 
 /* Etiqueta diagonal NEW */
 .etiqueta-nuevo {
-  position: absolute;
-  top: 10px;
-  right: -30px;
-  background: red;
-  color: white;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 5px 45px;
-  transform: rotate(45deg);
-  z-index: 10;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  letter-spacing: 1px;
-  pointer-events: none;
-}
+    position: absolute;
+    top: 10px;
+    right: -8px; /* Ajuste para que se vea bien en la esquina */
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 10px; /* Un padding más controlado */
+    transform: rotate(45deg);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    letter-spacing: 1px;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+
 
 
 /* Asegurarse que los productos tengan posición relativa para colocar la etiqueta */
@@ -912,18 +914,21 @@ tfoot {
 
 .etiqueta-soldout {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    background: #e53935; /* Un color rojo llamativo */
+    top: 10px;
+    right: -10px; /* Ajuste para que se vea bien en la esquina */
+    background: red;
     color: white;
     font-weight: bold;
-    font-size: 1.1rem; /* Un poco más grande para que se note */
-    padding: 8px 60px; /* Ancho suficiente para atravesar la imagen */
-    text-align: center;
-    letter-spacing: 2px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    padding: 5px 10px; /* Un padding más controlado */
+    transform: rotate(45deg);
     z-index: 10;
-    pointer-events: none; /* Para que el cursor no se vea afectado por la etiqueta */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    letter-spacing: 1px;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 
