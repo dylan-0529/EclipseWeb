@@ -108,15 +108,15 @@ main, .categoria, .nosotras, .fondo, .contacto {
 }
 
 .producto {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px;
 }
+
 
 
 .producto:nth-child(1) { animation-delay: 0.1s; }
@@ -139,8 +139,9 @@ main, .categoria, .nosotras, .fondo, .contacto {
 
 .producto img {
   width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
+  max-width: 450px; /* ancho máximo en desktop */
+  height: auto;
+  border-radius: 8px;
 }
 
 .producto h3 {
@@ -931,4 +932,36 @@ tfoot {
     white-space: nowrap;
 }
 
+.producto-info {
+  width: 100%;
+  max-width: 450px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+.producto button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 15px auto 0 auto;
+  padding: 10px;
+  background: #b4935c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
+/* Responsividad */
+@media (min-width: 768px) {
+  .producto {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .producto-info {
+    text-align: left;
+    margin-top: 0;
+  }
+}
