@@ -1065,3 +1065,10 @@ tfoot {
     grid-column: span 1;
   }
 }
+.producto-set-imagen {
+  position: relative; /* asegura que la etiqueta se ubique dentro del contenedor */
+}
+
+.producto-set-imagen .etiqueta-nuevo {
+  z-index: 20; /* la fuerza a estar siempre encima de la imagen */
+}
