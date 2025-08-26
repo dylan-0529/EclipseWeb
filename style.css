@@ -816,7 +816,7 @@ tfoot {
     pointer-events: none;
     overflow: hidden;
     white-space: nowrap;
-
+}
 
 
 /* Asegurarse que los productos tengan posición relativa para colocar la etiqueta */
@@ -975,59 +975,68 @@ tfoot {
   justify-content: center;
   max-width: 100%;
   margin: 0 auto 30px auto;
-  padding: 10px;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 /* Imagen del set */
 .producto-set-imagen img {
   width: 100%;
-  max-width: 350px; /* ajusta el tamaño máximo de la imagen */
+  max-width: 380px; /* un poquito más grande en pantallas grandes */
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
   display: block;
   margin: 0 auto;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* Detalles del set */
 .producto-set-detalles {
   width: 100%;
-  max-width: 400px;
-  margin-top: 15px;
+  max-width: 420px;
+  margin-top: 18px;
   text-align: center;
   font-size: 16px;
+  line-height: 1.5;
 }
 
 /* Opciones */
 .opciones-set {
-  margin: 10px 0;
+  margin: 12px 0;
   text-align: left;
 }
 
 /* Precio */
 .precio-set {
-  margin: 10px 0;
+  margin: 12px 0;
   font-weight: bold;
   color: #333;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 /* Botón elegante */
 .producto-set-detalles .boton-carrito-elegante {
   display: block;
   width: 100%;
-  max-width: 280px;
-  margin: 15px auto 0 auto;
-  padding: 12px;
+  max-width: 300px;
+  margin: 18px auto 0 auto;
+  padding: 14px;
   background: #b4935c;
   color: #fff;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .producto-set-detalles .boton-carrito-elegante:hover {
   background: #9e7f4c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 /* Responsividad */
@@ -1036,11 +1045,23 @@ tfoot {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
   }
 
   .producto-set-detalles {
     text-align: left;
     margin-top: 0;
+  }
+}
+}
+/* Hace que el producto ocupe dos columnas en pantallas grandes */
+.producto-set.doble {
+  grid-column: span 2;
+}
+
+/* En móviles se mantiene normal */
+@media (max-width: 768px) {
+  .producto-set.doble {
+    grid-column: span 1;
   }
 }

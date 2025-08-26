@@ -208,16 +208,32 @@
       <button class="boton-carrito-elegante" onclick="addToCart('Candongas Perlas', 28000, 'LO MÁS RECIENTE ECLIPSE/ARETES/Candongas Perlas.PNG')">Agregar al carrito</button>
     </div> 
 
-      <div class="producto nuevo">
-        <span class="etiqueta-nuevo">NEW</span>
-      <img src="LO MÁS RECIENTE ECLIPSE/ARETES/Candongas Tricolor (2).PNG" alt="Candongas Tricolor  " />
-      <h3>Candongas Tricolor </h3>
-      <p> G $20.000 </p>
-      <p> M $18.000 </p>
-      <p> P $16.000 </p>
-      <button class="boton-carrito-elegante" onclick="addToCart('Candongas Tricolor', 28000, 'eclipse-nuevo/ARETES/Candongas Tricolor (2).PNG')">Agregar al carrito</button>
-    </div> 
-  </div>
+<div class="producto-set doble">
+    <div class="producto-set-imagen">
+      <span class="etiqueta-nuevo">NEW</span>
+        <img src="LO MÁS RECIENTE ECLIPSE\ARETES\Candongas Tricolor (2).PNG" alt="Candongas Tricolor" />
+    </div>
+    <div class="producto-set-detalles">
+        <h3>Candongas Tricolor</h3>
+        <div class="opciones-set">
+            <label>
+                <input type="checkbox" class="item-set" value="20000" data-nombre="Candongas Tricolor (Grande)"> Grande ($20.000)
+            </label><br>
+            <label>
+                <input type="checkbox" class="item-set" value="18000" data-nombre="Candongas Tricolor (Mediano)"> Mediano ($18.000)
+            </label><br>
+            <label>
+                <input type="checkbox" class="item-set" value="16000" data-nombre="Candongas Tricolor (Pequeño)"> Pequeño ($16.000)
+            </label>
+        </div>
+        <p class="precio-set">Total: $0</p>
+        <button class="boton-carrito-elegante" onclick="addSetToCart(this)">
+            Agregar al carrito
+        </button>
+    </div>
+</div>
+
+</div>
 </section>
 
 <!-- Botón WhatsApp -->
