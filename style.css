@@ -858,11 +858,14 @@ tfoot {
 
 /* Detalles */
 .producto-set-detalles {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra verticalmente el bloque */
+    align-items: center;     /* centra horizontalmente el texto y botón */
+    text-align: center;      /* alinea el texto */
+    gap: 10px;               /* espacio entre título, precio y botón */
 }
+
 
 .producto-set-detalles h3 {
   margin-bottom: 10px;
@@ -1072,3 +1075,4 @@ tfoot {
 .producto-set-imagen .etiqueta-nuevo {
   z-index: 20; /* la fuerza a estar siempre encima de la imagen */
 }
+
