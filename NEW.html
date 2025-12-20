@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW | E C L I P S E</title>
     <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-v2.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="carrito.js" defer></script>
+    <script src="tienda-v2.js" defer></script>
+    <script src="sets-v2.js" defer></script>
+    <script src="drawer-carrito.js" defer></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
+<body class="page-new no-search">
 
-<body>
 <header>
     <h1 class="titulo">
         <a href="index.html" style="text-decoration: none; color: inherit;">E C L I P S E</a>
@@ -378,26 +381,7 @@
         alert("Productos agregados al carrito con éxito ✅");
     }
 
-    // Esta función debe existir en tu archivo `carrito.js`
-    function addToCart(nombre, precio, imagen) {
-        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        
-        const itemExistente = carrito.find(item => item.nombre === nombre);
-        
-        if (itemExistente) {
-            itemExistente.cantidad++;
-        } else {
-            carrito.push({
-                nombre: nombre,
-                precio: precio,
-                imagen: imagen,
-                cantidad: 1
-            });
-        }
-        
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        actualizarContadorCarrito();
-    }
+   
 </script>
 </body>
 </html>
