@@ -1,10 +1,10 @@
 /* =========================================================
-   E C L I P S E — Tienda V2 (Museo/Editorial) [FIXED]
-   - Buscador + filtros + ordenar (por grid, sin IDs duplicados)
-   - Vista rápida (modal)
-   - Wishlist (localStorage)
-   - Toasts elegantes
-   - Relevancia = orden original (siempre)
+   E C L I P S E — Tienda V2 (Museo/Editorial) [NEW FIX]
+   - Toolbar funcional (sin bugs de selección)
+   - NEW.html: una sola toolbar que controla todos los grids
+   - Otras páginas: toolbar por grid
+   - Respeta body.no-toolbar (no muestra toolbar)
+   - Vista rápida + Wishlist + Toasts + addToCart global
    ========================================================= */
 
 (() => {
@@ -97,31 +97,28 @@
     setTimeout(close, 2600);
   }
 
+  window.toast = window.toast || toast;
+
   // -----------------------
   // addToCart global (para tus botones)
   // -----------------------
   window.addToCart = function addToCart(nombre, precio, imagen, cantidad = 1) {
     nombre = String(nombre || "").replace(/\s+/g, " ").trim();
-imagen = String(imagen || "").trim();
-precio = Number(precio) || 0;
-cantidad = Number(cantidad) || 1;
+    imagen = String(imagen || "").trim();
+    precio = Number(precio) || 0;
+    cantidad = Number(cantidad) || 1;
 
     const carrito = getCart();
     const idx = carrito.findIndex((p) => p.nombre === nombre);
 
     if (idx !== -1) {
-      carrito[idx].cantidad += Number(cantidad) || 1;
+      carrito[idx].cantidad += cantidad;
     } else {
-      carrito.push({
-        nombre,
-        precio: Number(precio) || 0,
-        cantidad: Number(cantidad) || 1,
-        imagen,
-      });
+      carrito.push({ nombre, precio, cantidad, imagen });
     }
 
     setCart(carrito);
-window.dispatchEvent(new Event("cart:updated"));
+    window.dispatchEvent(new Event("cart:updated"));
 
     if (typeof window.updateCartCount === "function") {
       window.updateCartCount();
@@ -135,66 +132,56 @@ window.dispatchEvent(new Event("cart:updated"));
   };
 
   // -----------------------
-  // Estado por grid (evita bugs en NEW.html)
+  // Estado por toolbar (no por grid)
   // -----------------------
-  const stateMap = new WeakMap();
-
-  function getState(grid) {
-    if (!stateMap.has(grid)) {
-      stateMap.set(grid, {
-        search: "",
-        sort: "relevance",
-        filterNew: false,
-        filterDiscount: false,
-        filterWishlist: false,
-      });
-    }
-    return stateMap.get(grid);
+  function createState() {
+    return {
+      sort: "relevance",
+      filterNew: false,
+      filterDiscount: false,
+      filterWishlist: false,
+    };
   }
 
   // -----------------------
-  // Toolbar por grid (sin IDs, solo clases dentro del wrapper)
+  // Toolbar (con buscador removido, como pediste)
+  // Si luego quieres buscador, lo volvemos a meter bien.
   // -----------------------
-  function buildToolbar(grid) {
+  function buildToolbar() {
     const wrapper = document.createElement("div");
     wrapper.className = "toolbar-v2";
 
-   wrapper.innerHTML = `
-  <div class="toolbar-v2__row toolbar-v2__row--no-search">
-    <div class="toolbar-v2__selects">
-      <select class="sort-v2" aria-label="Ordenar">
-        <option value="relevance">Orden: Relevancia</option>
-        <option value="price-asc">Precio: menor a mayor</option>
-        <option value="price-desc">Precio: mayor a menor</option>
-        <option value="name-asc">Nombre: A → Z</option>
-        <option value="name-desc">Nombre: Z → A</option>
-        <option value="new-first">Primero: NEW</option>
-      </select>
-    </div>
-  </div>
+    wrapper.innerHTML = `
+      <div class="toolbar-v2__row toolbar-v2__row--no-search">
+        <div class="toolbar-v2__selects">
+          <select class="sort-v2" aria-label="Ordenar">
+            <option value="relevance">Orden: Relevancia</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A → Z</option>
+            <option value="name-desc">Nombre: Z → A</option>
+            <option value="new-first">Primero: NEW</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="toolbar-v2__chips" role="group" aria-label="Filtros">
-    <button class="chip" data-filter="new" type="button">NEW</button>
-    <button class="chip" data-filter="discount" type="button">Descuento</button>
-    <button class="chip" data-filter="wishlist" type="button">Favoritos</button>
-    <button class="chip chip--ghost" data-filter="clear" type="button">Limpiar</button>
-  </div>
+      <div class="toolbar-v2__chips" role="group" aria-label="Filtros">
+        <button class="chip" data-filter="new" type="button">NEW</button>
+        <button class="chip" data-filter="discount" type="button">Descuento</button>
+        <button class="chip" data-filter="wishlist" type="button">Favoritos</button>
+        <button class="chip chip--ghost" data-filter="clear" type="button">Limpiar</button>
+      </div>
 
-  <div class="toolbar-v2__meta">
-    <span class="results-v2">0 resultados</span>
-  </div>
-`;
-
-
-    if (grid.parentElement) {
-      grid.parentElement.insertBefore(wrapper, grid);
-    }
+      <div class="toolbar-v2__meta">
+        <span class="results-v2">0 resultados</span>
+      </div>
+    `;
 
     return wrapper;
   }
 
   // -----------------------
-  // Modal Vista rápida (global)
+  // Modal Vista rápida
   // -----------------------
   function ensureQuickModal() {
     let modal = $("#quick-modal-v2");
@@ -235,10 +222,6 @@ window.dispatchEvent(new Event("cart:updated"));
                 <i class="fa-regular fa-heart"></i> Favorito
               </button>
             </div>
-
-            <div class="modal-v2__hint">
-              Tip: puedes buscar, filtrar y ordenar sin salir de la página.
-            </div>
           </div>
         </div>
       </div>
@@ -247,10 +230,8 @@ window.dispatchEvent(new Event("cart:updated"));
     document.body.appendChild(modal);
 
     modal.addEventListener("click", (e) => {
-      const target = e.target;
-      if (target && target.dataset && target.dataset.close === "1") {
-        closeQuickView();
-      }
+      const t = e.target;
+      if (t && t.dataset && t.dataset.close === "1") closeQuickView();
     });
 
     document.addEventListener("keydown", (e) => {
@@ -258,22 +239,14 @@ window.dispatchEvent(new Event("cart:updated"));
     });
 
     const qtyInput = $("#qm-qty", modal);
-    const minusBtn = $("#qm-minus", modal);
-    const plusBtn = $("#qm-plus", modal);
-
-    if (minusBtn) {
-      minusBtn.addEventListener("click", () => {
-        const v = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
-        qtyInput.value = String(v);
-      });
-    }
-
-    if (plusBtn) {
-      plusBtn.addEventListener("click", () => {
-        const v = Math.max(1, (parseInt(qtyInput.value, 10) || 1) + 1);
-        qtyInput.value = String(v);
-      });
-    }
+    $("#qm-minus", modal)?.addEventListener("click", () => {
+      const v = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+      qtyInput.value = String(v);
+    });
+    $("#qm-plus", modal)?.addEventListener("click", () => {
+      const v = Math.max(1, (parseInt(qtyInput.value, 10) || 1) + 1);
+      qtyInput.value = String(v);
+    });
 
     return modal;
   }
@@ -287,7 +260,6 @@ window.dispatchEvent(new Event("cart:updated"));
 
   function openQuickView({ nombre, precio, imagen }) {
     const modal = ensureQuickModal();
-
     const title = $("#qm-title", modal);
     const price = $("#qm-price", modal);
     const img = $("#qm-img", modal);
@@ -331,31 +303,30 @@ window.dispatchEvent(new Event("cart:updated"));
       }
 
       syncWish();
-
-      // refresca iconos en cards
-      $$(".producto").forEach((c) => {
-        if ((c.dataset.nombre || "") === nombre) {
-          const w = $(".wish-btn", c);
-          if (w) {
-            const inCardWish = isInWishlist(nombre);
-            w.innerHTML = inCardWish
-              ? `<i class="fa-solid fa-heart"></i>`
-              : `<i class="fa-regular fa-heart"></i>`;
-            w.classList.toggle("wish-btn--active", inCardWish);
-          }
-        }
-      });
-
-      // Re-aplicar filtros en TODOS los grids (por si "Favoritos" está activo en alguno)
-      $$(".productos-grid").forEach((g) => applyFiltersAndSort(g));
+      refreshWishIconsEverywhere(nombre);
     };
 
     modal.classList.add("modal-v2--open");
     document.body.classList.add("no-scroll");
   }
 
+  function refreshWishIconsEverywhere(nombre) {
+    $$(".producto").forEach((c) => {
+      if ((c.dataset.nombre || "") === nombre) {
+        const w = $(".wish-btn", c);
+        if (w) {
+          const inCardWish = isInWishlist(nombre);
+          w.innerHTML = inCardWish
+            ? `<i class="fa-solid fa-heart"></i>`
+            : `<i class="fa-regular fa-heart"></i>`;
+          w.classList.toggle("wish-btn--active", inCardWish);
+        }
+      }
+    });
+  }
+
   // -----------------------
-  // Enriquecer cards
+  // Enriquecer cards (dataset + botones)
   // -----------------------
   function enhanceProductCards(grid) {
     const cards = $$(".producto", grid);
@@ -363,12 +334,10 @@ window.dispatchEvent(new Event("cart:updated"));
     cards.forEach((card, index) => {
       const img = $("img", card);
       const titleEl = $("h3", card);
-
       if (!img || !titleEl) return;
 
       const nombre = titleEl.textContent.trim();
 
-      // Precio: detecta precio-final si existe (descuento), si no el primer <p>
       let precio = 0;
       const finalPriceEl = $(".precio-final", card);
       if (finalPriceEl) {
@@ -380,24 +349,18 @@ window.dispatchEvent(new Event("cart:updated"));
 
       const imagen = img.getAttribute("src") || "";
 
-      // Guardar dataset para filtros/orden
       card.dataset.nombre = nombre;
       card.dataset.nombreN = normalizeText(nombre);
       card.dataset.precio = String(precio);
       card.dataset.imagen = imagen;
 
-      // NEW = clase .nuevo (como ya tienes)
+      // NEW solo si existe etiqueta-nuevo
       const hasNewBadge = card.querySelector(".etiqueta-nuevo");
       card.dataset.isNew = hasNewBadge ? "1" : "0";
 
-
-      // Descuento = badge (solo donde exista)
       card.dataset.isDiscount = $(".descuento-badge", card) ? "1" : "0";
 
-      // Relevancia: guardar orden original dentro del grid
-      if (!card.dataset.order) {
-        card.dataset.order = String(index);
-      }
+      if (!card.dataset.order) card.dataset.order = String(index);
 
       // Vista rápida
       if (!$(".quick-btn", card)) {
@@ -425,15 +388,14 @@ window.dispatchEvent(new Event("cart:updated"));
         wish.setAttribute("aria-label", "Agregar a favoritos");
         card.appendChild(wish);
 
-        const syncWishIcon = () => {
+        const sync = () => {
           const inWish = isInWishlist(nombre);
           wish.innerHTML = inWish
             ? `<i class="fa-solid fa-heart"></i>`
             : `<i class="fa-regular fa-heart"></i>`;
           wish.classList.toggle("wish-btn--active", inWish);
         };
-
-        syncWishIcon();
+        sync();
 
         wish.addEventListener("click", (e) => {
           e.preventDefault();
@@ -451,30 +413,24 @@ window.dispatchEvent(new Event("cart:updated"));
             toast(`Guardado en favoritos: <b>${nombre}</b>`, "ok");
           }
 
-          syncWishIcon();
-
-          // Refiltrar grid actual (y otros grids si el usuario tiene favoritos activado)
-          $$(".productos-grid").forEach((g) => applyFiltersAndSort(g));
+          sync();
         });
       }
     });
   }
 
   // -----------------------
-  // Filtros + Orden (por grid)
+  // Aplicar filtros/orden a un grid (sin romper DOM)
   // -----------------------
-  function applyFiltersAndSort(grid) {
-    const state = getState(grid);
+  function applyToGrid(grid, state) {
     const cards = $$(".producto", grid);
 
-    // Filtrado
+    // filtrar
     let visible = cards.filter((card) => {
-      const nameNorm = card.dataset.nombreN || "";
       const isNew = card.dataset.isNew === "1";
       const isDiscount = card.dataset.isDiscount === "1";
       const nombre = card.dataset.nombre || "";
 
-      if (state.search && !nameNorm.includes(state.search)) return false;
       if (state.filterNew && !isNew) return false;
       if (state.filterDiscount && !isDiscount) return false;
       if (state.filterWishlist && !isInWishlist(nombre)) return false;
@@ -482,69 +438,64 @@ window.dispatchEvent(new Event("cart:updated"));
       return true;
     });
 
-    // Orden
-    const sort = state.sort;
+    // ordenar
     const collator = new Intl.Collator("es", { sensitivity: "base" });
 
-    if (sort === "relevance") {
-      visible.sort((a, b) => (parseInt(a.dataset.order, 10) || 0) - (parseInt(b.dataset.order, 10) || 0));
-    } else if (sort === "price-asc") {
-      visible.sort((a, b) => (parseInt(a.dataset.precio, 10) || 0) - (parseInt(b.dataset.precio, 10) || 0));
-    } else if (sort === "price-desc") {
-      visible.sort((a, b) => (parseInt(b.dataset.precio, 10) || 0) - (parseInt(a.dataset.precio, 10) || 0));
-    } else if (sort === "name-asc") {
+    if (state.sort === "relevance") {
+      visible.sort(
+        (a, b) => (parseInt(a.dataset.order, 10) || 0) - (parseInt(b.dataset.order, 10) || 0)
+      );
+    } else if (state.sort === "price-asc") {
+      visible.sort(
+        (a, b) => (parseInt(a.dataset.precio, 10) || 0) - (parseInt(b.dataset.precio, 10) || 0)
+      );
+    } else if (state.sort === "price-desc") {
+      visible.sort(
+        (a, b) => (parseInt(b.dataset.precio, 10) || 0) - (parseInt(a.dataset.precio, 10) || 0)
+      );
+    } else if (state.sort === "name-asc") {
       visible.sort((a, b) => collator.compare(a.dataset.nombre || "", b.dataset.nombre || ""));
-    } else if (sort === "name-desc") {
+    } else if (state.sort === "name-desc") {
       visible.sort((a, b) => collator.compare(b.dataset.nombre || "", a.dataset.nombre || ""));
-    } else if (sort === "new-first") {
+    } else if (state.sort === "new-first") {
       visible.sort((a, b) => (b.dataset.isNew === "1") - (a.dataset.isNew === "1"));
     }
 
-    // Aplicar visibilidad
+    // mostrar/ocultar
     cards.forEach((c) => c.classList.add("is-hidden"));
     visible.forEach((c) => c.classList.remove("is-hidden"));
 
-    // Reordenar DOM (solo para que el usuario vea el orden real)
-    const hidden = cards.filter((c) => c.classList.contains("is-hidden"));
-    grid.innerHTML = "";
-    [...visible, ...hidden].forEach((c) => grid.appendChild(c));
+    // reordenar sin destruir listeners: mover nodos existentes
+    visible.forEach((c) => grid.appendChild(c));
+    cards
+      .filter((c) => c.classList.contains("is-hidden"))
+      .forEach((c) => grid.appendChild(c));
 
-    // Resultados (del toolbar correspondiente a este grid)
-    const toolbar = grid.previousElementSibling;
-    if (toolbar && toolbar.classList.contains("toolbar-v2")) {
-      const results = $(".results-v2", toolbar);
-      if (results) results.textContent = `${visible.length} resultados`;
-
-      // Opcional: si no hay descuentos en este grid, el chip "Descuento" sigue funcionando (pero dará 0)
-      // Eso es normal.
-    }
+    return visible.length;
   }
 
   // -----------------------
-  // Init por grid
+  // Conectar toolbar a uno o varios grids
   // -----------------------
-  function initGrid(grid) {
-    const toolbar = buildToolbar(grid);
-    const state = getState(grid);
-
-    // Enhance cards (dataset + botones)
-    enhanceProductCards(grid);
-
-    
+  function wireToolbar(toolbar, grids) {
+    const state = createState();
     const sortSelect = $(".sort-v2", toolbar);
     const chips = $$(".chip", toolbar);
+    const resultsEl = $(".results-v2", toolbar);
 
-    if (searchInput) {
-      searchInput.addEventListener("input", () => {
-        state.search = normalizeText(searchInput.value);
-        applyFiltersAndSort(grid);
+    function renderAll() {
+      let totalVisible = 0;
+      grids.forEach((g) => {
+        totalVisible += applyToGrid(g, state);
       });
+      if (resultsEl) resultsEl.textContent = `${totalVisible} resultados`;
     }
 
+    // eventos
     if (sortSelect) {
       sortSelect.addEventListener("change", () => {
         state.sort = sortSelect.value;
-        applyFiltersAndSort(grid);
+        renderAll();
       });
     }
 
@@ -556,29 +507,63 @@ window.dispatchEvent(new Event("cart:updated"));
           state.filterNew = false;
           state.filterDiscount = false;
           state.filterWishlist = false;
-
           chips.forEach((c) => c.classList.remove("chip--active"));
-          applyFiltersAndSort(grid);
+          renderAll();
           return;
         }
 
+        // activar solo este chip, no “todos”
         chip.classList.toggle("chip--active");
 
         if (filter === "new") state.filterNew = chip.classList.contains("chip--active");
         if (filter === "discount") state.filterDiscount = chip.classList.contains("chip--active");
         if (filter === "wishlist") state.filterWishlist = chip.classList.contains("chip--active");
 
-        applyFiltersAndSort(grid);
+        renderAll();
       });
     });
 
-    // Primer render
-    applyFiltersAndSort(grid);
+    // primer render
+    renderAll();
   }
 
+  // -----------------------
+  // Boot
+  // -----------------------
   function boot() {
+    const disableToolbar = document.body.classList.contains("no-toolbar");
+    const isNewPage = document.body.classList.contains("page-new");
+
     const grids = $$(".productos-grid");
-    grids.forEach(initGrid);
+
+    // siempre enriquecer cards (wishlist/quickview/datasets)
+    grids.forEach((g) => enhanceProductCards(g));
+
+    if (disableToolbar) return;
+
+    if (isNewPage) {
+      // UNA toolbar para todos los grids en NEW
+      const main = $("main") || document.body;
+      const toolbar = buildToolbar();
+
+      // Insertar debajo del <h2 class="subtitulo"> si existe
+      const subtitle = $(".subtitulo", main);
+      if (subtitle && subtitle.parentElement) {
+        subtitle.insertAdjacentElement("afterend", toolbar);
+      } else {
+        main.insertBefore(toolbar, main.firstChild);
+      }
+
+      wireToolbar(toolbar, grids);
+      return;
+    }
+
+    // Páginas normales: toolbar por grid
+    grids.forEach((grid) => {
+      const toolbar = buildToolbar();
+      if (grid.parentElement) grid.parentElement.insertBefore(toolbar, grid);
+      wireToolbar(toolbar, [grid]);
+    });
   }
 
   document.addEventListener("DOMContentLoaded", boot);
