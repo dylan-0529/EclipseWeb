@@ -1728,3 +1728,513 @@ header.scrolled {
   border-color: rgba(210, 52, 52, 0.25);
   background: rgba(210, 52, 52, 0.07);
 }
+/* =========================================================
+   CONTACTO PRO — (page-contacto)
+   Pegar al FINAL de style-v2.css
+   ========================================================= */
+
+.page-contacto .contacto-pro {
+  padding-top: 22px;
+}
+
+/* HERO */
+.page-contacto .contacto-hero {
+  position: relative;
+  border-radius: calc(var(--radius) + 10px);
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 16px;
+  padding: 18px;
+  margin: 6px 0 16px;
+}
+
+.page-contacto .contacto-hero__glow {
+  position: absolute;
+  inset: -40% -30% auto auto;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 30% 30%, rgba(201,165,107,0.28), rgba(201,165,107,0.00) 60%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.page-contacto .contacto-kicker {
+  margin: 6px 0 6px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: rgba(43,43,43,0.60);
+}
+
+.page-contacto .contacto-title {
+  margin: 0 0 10px;
+}
+
+.page-contacto .contacto-desc {
+  max-width: 66ch;
+  margin: 0 0 12px;
+  text-align: justify;
+}
+
+.page-contacto .contacto-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 14px;
+}
+
+.page-contacto .chip-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,165,107,0.30);
+  background: rgba(201,165,107,0.10);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  color: rgba(43,43,43,0.82);
+}
+
+.page-contacto .contacto-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Botones hero */
+.page-contacto .btn-contacto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 999px;
+  padding: 12px 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.92);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(43,43,43,0.92);
+
+  cursor: pointer;
+  transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease);
+}
+
+.page-contacto .btn-contacto:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,165,107,0.38);
+  background: rgba(201,165,107,0.10);
+}
+
+.page-contacto .btn-contacto--primary {
+  border-color: rgba(201,165,107,0.45);
+  background: rgba(201,165,107,0.18);
+}
+
+.page-contacto .btn-contacto--ghost {
+  border-color: rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.85);
+}
+
+/* Mini card derecha */
+.page-contacto .mini-card {
+  height: 100%;
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.92);
+  padding: 14px 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-contacto .mini-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.page-contacto .mini-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,165,107,0.30);
+  background: rgba(201,165,107,0.10);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(43,43,43,0.78);
+}
+
+.page-contacto .mini-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(201,165,107,0.95);
+  box-shadow: 0 0 0 6px rgba(201,165,107,0.15);
+}
+
+.page-contacto .mini-title {
+  margin: 0 0 8px;
+  font-family: "Gilda Display", serif;
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  color: rgba(43,43,43,0.95);
+}
+
+.page-contacto .mini-text {
+  margin: 0 0 12px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.72);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.page-contacto .mini-copy {
+  width: 100%;
+  border-radius: 999px;
+  padding: 12px 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.92);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: rgba(43,43,43,0.90);
+
+  cursor: pointer;
+  transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease);
+}
+
+.page-contacto .mini-copy:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,165,107,0.38);
+  background: rgba(201,165,107,0.10);
+}
+
+.page-contacto .mini-hint {
+  margin: 10px 0 0;
+  min-height: 18px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.65);
+  font-size: 12px;
+}
+
+/* GRID principal */
+.page-contacto .contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.page-contacto .contacto-col {
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+}
+
+.page-contacto .contacto-subtitle {
+  margin: 4px 0 8px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: rgba(43,43,43,0.90);
+  font-weight: 400;
+}
+
+.page-contacto .contacto-lead {
+  margin: 0 0 12px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.70);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Cards canales */
+.page-contacto .contacto-cards {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.page-contacto .contacto-card {
+  display: grid;
+  grid-template-columns: 44px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.92);
+  padding: 12px 12px;
+  transition: transform 220ms var(--ease), border-color 220ms var(--ease), box-shadow 220ms var(--ease), background 220ms var(--ease);
+}
+
+.page-contacto .contacto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  border-color: rgba(201,165,107,0.32);
+  background: rgba(255,255,255,0.96);
+}
+
+.page-contacto .contacto-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.92);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: rgba(43,43,43,0.85);
+}
+
+.page-contacto .contacto-card__title {
+  margin: 0;
+  font-family: "Gilda Display", serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: rgba(43,43,43,0.95);
+}
+
+.page-contacto .contacto-card__text {
+  margin: 4px 0 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.70);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.page-contacto .contacto-card__arrow {
+  justify-self: end;
+  opacity: 0.65;
+}
+
+.page-contacto .contacto-card--wa .contacto-card__icon {
+  border-color: rgba(37, 211, 102, 0.22);
+  background: rgba(37, 211, 102, 0.10);
+}
+
+.page-contacto .contacto-card--ig .contacto-card__icon {
+  border-color: rgba(225, 48, 108, 0.20);
+  background: rgba(225, 48, 108, 0.08);
+}
+
+.page-contacto .contacto-card--tt .contacto-card__icon {
+  border-color: rgba(0,0,0,0.16);
+  background: rgba(0,0,0,0.04);
+}
+
+/* Nota */
+.page-contacto .contacto-note {
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: 18px;
+  border: 1px dashed rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.78);
+
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: start;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.72);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.page-contacto .contacto-note i {
+  margin-top: 2px;
+  color: rgba(201,165,107,0.95);
+}
+
+.page-contacto .pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,165,107,0.26);
+  background: rgba(201,165,107,0.10);
+  margin: 0 2px;
+  font-size: 12px;
+}
+
+/* FAQ */
+.page-contacto .faq {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.page-contacto .faq-item {
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.92);
+  overflow: hidden;
+}
+
+.page-contacto .faq-item summary {
+  list-style: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 12px 12px;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.88);
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+.page-contacto .faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.page-contacto .faq-item summary i {
+  opacity: 0.65;
+  transition: transform 180ms var(--ease);
+}
+
+.page-contacto .faq-item[open] summary i {
+  transform: rotate(180deg);
+}
+
+.page-contacto .faq-body {
+  padding: 0 12px 12px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.72);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Info box */
+.page-contacto .info-box {
+  margin-top: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.92);
+  padding: 12px 12px;
+}
+
+.page-contacto .info-box__title {
+  margin: 0 0 8px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: rgba(43,43,43,0.70);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-contacto .info-box__text {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: rgba(43,43,43,0.72);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .page-contacto .contacto-hero {
+    grid-template-columns: 1fr;
+  }
+  .page-contacto .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   FIX — SETS dentro de .productos-grid (evitar que se alarguen)
+   - Hace que cualquier .producto-set dentro de un grid ocupe toda la fila
+   - Mejora alineación y compacta altura visual
+   ========================================================= */
+
+.productos-grid > .producto-set,
+.productos-grid > .producto-set.doble {
+  grid-column: 1 / -1;
+}
+
+/* Opciones del set: look consistente en TODAS las páginas (no solo NEW) */
+.producto-set .opciones-set label {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.92);
+  cursor: pointer;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(43,43,43,0.90);
+  transition: transform 180ms var(--ease), border-color 180ms var(--ease), background 180ms var(--ease);
+}
+
+.producto-set .opciones-set label:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,165,107,0.35);
+  background: rgba(201,165,107,0.10);
+}
+
+.producto-set .opciones-set input[type="checkbox"],
+.producto-set .opciones-set input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.95);
+  display: grid;
+  place-items: center;
+}
+
+.producto-set .opciones-set input[type="checkbox"]:checked,
+.producto-set .opciones-set input[type="radio"]:checked {
+  border-color: rgba(201,165,107,0.70);
+  background: rgba(201,165,107,0.14);
+}
+
+.producto-set .opciones-set input[type="checkbox"]:checked::after,
+.producto-set .opciones-set input[type="radio"]:checked::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: rgba(201,165,107,0.95);
+}

@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contacto | E C L I P S E</title> 
+  <title>Contacto | E C L I P S E</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style-v2.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
   <script src="carrito.js" defer></script>
-  <script src="tienda-v2.js" defer></script>
   <script src="drawer-carrito.js" defer></script>
 
-    <!-- Favicon básico -->
-<link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
-<!-- Icono para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-
-<!-- Icono para Apple -->
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <!-- Favicon básico -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Icono para navegadores modernos -->
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <!-- Icono para Apple -->
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
 
-<body>
+<body class="page-contacto">
+
 <header>
   <h1 class="titulo">
     <a href="index.html" style="text-decoration: none; color: inherit;">E C L I P S E</a>
@@ -44,29 +44,174 @@
   </nav>
 </header>
 
-<section class="categoria">
-  <h2 class="subtitulo">Contáctanos</h2>
-  <p class="texto-contacto">
-    Si tienes dudas, quieres hacer un pedido personalizado o simplemente hablar con nosotras, aquí te dejamos nuestras redes:
-  </p>
+<main class="categoria contacto-pro">
 
-  <div class="redes-contacto">
-    <a href="https://wa.me/573003578712" class="boton-red" target="_blank">
-      <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp
-    </a>
+  <!-- HERO -->
+  <section class="contacto-hero">
+    <div class="contacto-hero__glow" aria-hidden="true"></div>
 
-    <a href="https://www.instagram.com/_eclipse.col?igsh=dnZldjdueTN3YWNj" class="boton-red" target="_blank">
-      <i class="fab fa-instagram"></i> Síguenos en Instagram
-    </a>
+    <div class="contacto-hero__content">
+      <p class="contacto-kicker">E C L I P S E · Contacto</p>
+      <h2 class="subtitulo contacto-title">Hablemos ✨</h2>
 
-    <a href="https://www.tiktok.com/@_eclipse.col?_t=ZS-8xwhsPIYFn8&_r=1" class="boton-red" target="_blank">
-      <i class="fab fa-tiktok"></i> Mira nuestros TikToks
-    </a>
-  </div>
-</section>
+      <p class="texto-contacto contacto-desc">
+        ¿Tienes dudas, quieres un pedido personalizado o necesitas ayuda con tu compra?
+        Escríbenos por el canal que prefieras. Respondemos lo más pronto posible.
+      </p>
+
+      <div class="contacto-hero__chips" aria-label="Información rápida">
+        <span class="chip-info"><i class="fa-solid fa-bag-shopping"></i> Pedidos</span>
+        <span class="chip-info"><i class="fa-solid fa-wand-magic-sparkles"></i> Personalizados</span>
+        <span class="chip-info"><i class="fa-solid fa-truck-fast"></i> Envíos</span>
+      </div>
+
+      <div class="contacto-hero__cta">
+        <a class="btn-contacto btn-contacto--primary" href="https://wa.me/573003578712" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a class="btn-contacto btn-contacto--ghost" href="#faq">
+          <i class="fa-regular fa-circle-question"></i> Ver preguntas frecuentes
+        </a>
+      </div>
+    </div>
+
+    <div class="contacto-hero__aside" aria-label="Tarjeta destacada">
+      <div class="mini-card">
+        <div class="mini-card__top">
+          <div class="mini-badge">Atención</div>
+          <div class="mini-dot" aria-hidden="true"></div>
+        </div>
+
+        <p class="mini-title">Para pedidos personalizados</p>
+        <p class="mini-text">
+          Envíanos una foto de referencia y dinos: color, dije (si aplica) y dudas que tengas.
+          Te respondemos con opciones y tiempos.
+        </p>
+
+        <button class="mini-copy" type="button" id="btnCopiar">
+          <i class="fa-regular fa-copy"></i> Copiar número
+        </button>
+        <p class="mini-hint" id="copyHint" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID PRINCIPAL -->
+  <section class="contacto-grid">
+
+    <!-- IZQUIERDA: BOTONES PRO -->
+    <div class="contacto-col">
+      <h3 class="contacto-subtitle">Canales oficiales</h3>
+      <p class="contacto-lead">
+        Elige un canal y te atendemos. Si es compra, mejor por WhatsApp para confirmar detalles.
+      </p>
+
+      <div class="contacto-cards">
+
+        <a class="contacto-card contacto-card--wa" href="https://wa.me/573003578712" target="_blank" rel="noopener">
+          <div class="contacto-card__icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contacto-card__body">
+            <p class="contacto-card__title">WhatsApp</p>
+            <p class="contacto-card__text">Pedidos · Stock · Envíos · Personalizados</p>
+          </div>
+          <div class="contacto-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+        </a>
+
+        <a class="contacto-card contacto-card--ig" href="https://www.instagram.com/_eclipse.col?igsh=dnZldjdueTN3YWNj" target="_blank" rel="noopener">
+          <div class="contacto-card__icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <div class="contacto-card__body">
+            <p class="contacto-card__title">Instagram</p>
+            <p class="contacto-card__text">Novedades · Drops · Recomendaciones</p>
+          </div>
+          <div class="contacto-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+        </a>
+
+        <a class="contacto-card contacto-card--tt" href="https://www.tiktok.com/@_eclipse.col?_t=ZS-8xwhsPIYFn8&_r=1" target="_blank" rel="noopener">
+          <div class="contacto-card__icon">
+            <i class="fab fa-tiktok"></i>
+          </div>
+          <div class="contacto-card__body">
+            <p class="contacto-card__title">TikTok</p>
+            <p class="contacto-card__text">Looks · Video reseñas · Ideas de uso</p>
+          </div>
+          <div class="contacto-card__arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+        </a>
+
+      </div>
+
+      <div class="contacto-note">
+        <i class="fa-solid fa-shield-heart"></i>
+        <p>
+          <b>Tip:</b> Para una atención más rápida, envía tu mensaje con:
+          <span class="pill">producto</span> · <span class="pill">ciudad</span> · <span class="pill">cantidad</span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- DERECHA: FAQ / INFO -->
+    <aside class="contacto-col" id="faq">
+      <h3 class="contacto-subtitle">Preguntas frecuentes</h3>
+      <p class="contacto-lead">Respuestas rápidas para que no pierdas tiempo.</p>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>
+            <span>¿Hacen envíos?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="faq-body">
+            Sí. Coordinamos el envío al confirmar tu pedido. Escríbenos por WhatsApp con tu ciudad y el producto para darte opciones.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>¿Cómo compro?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="faq-body">
+            Agrega al carrito, revisa tu pedido y finaliza. Si prefieres, también puedes pedir por WhatsApp enviando captura del producto.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>¿Hacen personalizados?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="faq-body">
+            Sí. Envíanos referencia + idea de estilo (dorado/plateado, tipo de pieza, presupuesto). Te respondemos con propuestas.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>¿Cuánto tardan en responder?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </summary>
+          <div class="faq-body">
+            Lo más rápido posible. Si es un pedido, WhatsApp es el canal principal para confirmar.
+          </div>
+        </details>
+      </div>
+
+      <div class="info-box">
+        <p class="info-box__title"><i class="fa-solid fa-circle-info"></i> Atención</p>
+        <p class="info-box__text">
+          Si tu mensaje es por <b>devolución/cambio</b>, envía: número de pedido + foto + descripción.
+        </p>
+      </div>
+    </aside>
+
+  </section>
+</main>
 
 <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/573003578712" target="_blank" class="whatsapp-float">
+<a href="https://wa.me/573003578712" target="_blank" class="whatsapp-float" rel="noopener">
   <img src="img/whatsapp-icon.png" alt="WhatsApp" />
 </a>
 
@@ -77,11 +222,13 @@
 </a>
 
 <script>
+  // Header scrolled
   window.addEventListener("scroll", function () {
     const header = document.querySelector("header");
     header.classList.toggle("scrolled", window.scrollY > 50);
   });
 
+  // Activo en menú
   const currentPage = window.location.pathname.split("/").pop();
   document.querySelectorAll(".link-menu").forEach(link => {
     if (link.getAttribute("href") === currentPage) {
@@ -89,6 +236,7 @@
     }
   });
 
+  // Contador carrito
   function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
@@ -99,8 +247,27 @@
       el.classList.add("pop");
     });
   }
-
   document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+
+  // Copiar número (pro)
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btnCopiar");
+    const hint = document.getElementById("copyHint");
+    const numero = "+57 300 357 8712";
+
+    if (btn) {
+      btn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(numero);
+          hint.textContent = "Número copiado ✓";
+          setTimeout(() => hint.textContent = "", 1800);
+        } catch (e) {
+          hint.textContent = "No se pudo copiar. Cópialo manual: " + numero;
+          setTimeout(() => hint.textContent = "", 2600);
+        }
+      });
+    }
+  });
 </script>
 
 </body>

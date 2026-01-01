@@ -342,45 +342,6 @@
     }
     
     document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
-
-    // Lógica para los sets (solucionando el problema)
-    const setContainers = document.querySelectorAll('.producto-set');
-    setContainers.forEach(setContainer => {
-        const checkboxes = setContainer.querySelectorAll('.item-set');
-        const precioTexto = setContainer.querySelector('.precio-set');
-
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', () => {
-                let total = 0;
-                checkboxes.forEach(c => {
-                    if (c.checked) {
-                        total += parseInt(c.value);
-                    }
-                });
-                precioTexto.textContent = "Total: $" + total.toLocaleString('es-CO');
-            });
-        });
-    });
-
-    // La función `addSetToCart` ahora usa el selector correcto
-    function addSetToCart(button) {
-        const setContainer = button.closest('.producto-set');
-        const checkboxes = setContainer.querySelectorAll('.item-set:checked');
-        const imagePath = setContainer.querySelector('img').src;
-        
-        if (checkboxes.length === 0) {
-            alert("Por favor selecciona al menos un producto.");
-            return;
-        }
-
-        checkboxes.forEach(cb => {
-            const nombre = cb.dataset.nombre;
-            const precio = parseInt(cb.value);
-            addToCart(nombre, precio, imagePath);
-        });
-        alert("Productos agregados al carrito con éxito ✅");
-    }
-
    
 </script>
 </body>
