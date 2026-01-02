@@ -4,27 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inicio | E C L I P S E</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style-v2.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <!-- Favicon básico -->
-<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
-<!-- Icono para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-<!-- Icono para Apple -->
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <script src="carrito.js" defer></script>
+  <script src="tienda-v2.js" defer></script>
+  <script src="drawer-carrito.js" defer></script>
 </head>
-<script src="carrito.js"></script>
-<script src="tienda-v2.js" defer></script>
-<body>
+
+<body class="page-home no-toolbar">
 
 <header>
   <h1 class="titulo">
     <a href="index.html" style="text-decoration: none; color: inherit;">E C L I P S E</a>
   </h1>
+
   <nav class="menu">
     <a href="index.html" class="link-menu activo">Inicio</a>
     <a href="NEW.html" class="link-menu">NEW</a>
@@ -36,107 +38,241 @@
     <a href="pulseras.html" class="link-menu">Pulseras</a>
     <a href="contacto.html" class="link-menu">Contacto</a>
     <a href="sobre-nosotras.html" class="link-menu">Sobre nosotras</a>
-    <a href="carrito.html" class="link-menu"><i class="fas fa-shopping-cart"></i> </a>
+    <a href="carrito.html" class="link-menu"><i class="fas fa-shopping-cart"></i></a>
   </nav>
 </header>
 
-  <!-- Carrusel Publicitario -->
-  <div class="carousel-container">
-    <div class="carousel-slide fade">
-      <img src="img/2.png" alt="Publicidad 1">
-    </div>
-    <div class="carousel-slide fade">
-      <img src="img/3.png" alt="Publicidad 2">
-    </div>
-        <div class="carousel-slide fade">
-      <img src="img/4.png" alt="Publicidad 3">
-    </div>
-    <a class="prev">❮</a>
-    <a class="next">❯</a>
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero__media">
+    <div class="carousel-container home-carousel">
+      <div class="carousel-slide fade">
+        <img src="img/2.png" alt="ECLIPSE - Banner 1">
+      </div>
+      <div class="carousel-slide fade">
+        <img src="img/3.png" alt="ECLIPSE - Banner 2">
+      </div>
+      <div class="carousel-slide fade">
+        <img src="img/4.png" alt="ECLIPSE - Banner 3">
+      </div>
 
-    <div class="carousel-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <div class="carousel-dots">
+        <span class="dot" role="button" aria-label="Slide 1"></span>
+        <span class="dot" role="button" aria-label="Slide 2"></span>
+        <span class="dot" role="button" aria-label="Slide 3"></span>
+      </div>
     </div>
+
+    <div class="home-hero__overlay"></div>
+    <div class="home-hero__eclipse"></div>
   </div>
 
+  <div class="home-hero__content">
+    <p class="home-hero__kicker">• Elegancia sutil • Detalles que brillan •</p>
+    <h2 class="home-hero__title">Accesorios que se sienten como tú.</h2>
+    <p class="home-hero__text">
+      Piezas sobrias, delicadas y auténticas — pensadas para elevar tu look sin esfuerzo.
+    </p>
 
-<div class="imagen-promocional">
-  <img src="img/MODO DESCUENTO.png.png" alt="Colección nueva Eclipse" />
-</div>
+    <div class="home-hero__cta">
+      <a class="btn-home btn-home--primary" href="NEW.html">Ver colección NEW</a>
+      <a class="btn-home btn-home--ghost" href="contacto.html">Pedidos por WhatsApp</a>
+    </div>
+  </div>
+</section>
 
+<main class="home-wrap">
 
+  <!-- QUICK LINKS -->
+  <section class="home-section">
+    <div class="home-section__head">
+      <h3 class="home-section__title">Explora por categoría</h3>
+      <p class="home-section__sub">Encuentra tu vibe en segundos.</p>
+    </div>
 
-  <a href="https://wa.me/573003578712" target="_blank" class="whatsapp-float">
-    <img src="img/whatsapp-icon.png" alt="WhatsApp" />
-  </a>
+    <div class="quick-links">
+      <a class="quick-card" href="NEW.html">
+        <div class="quick-card__top">
+          <span class="quick-chip">NEW</span>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <h4>Lo más nuevo</h4>
+        <p>Lo último en tendencia, curado por ECLIPSE.</p>
+      </a>
 
+      <a class="quick-card" href="aretes.html">
+        <div class="quick-card__top">
+          <span class="quick-chip">Aretes</span>
+          <i class="fa-regular fa-heart"></i>
+        </div>
+        <h4>Aretes</h4>
+        <p>Minimal, statement y combos preciosos.</p>
+      </a>
 
-  <script>
-    const currentPage = window.location.pathname.split("/").pop();
-    const links = document.querySelectorAll(".link-menu");
-    links.forEach(link => {
-      if (link.getAttribute("href") === currentPage || (currentPage === "" && link.getAttribute("href") === "index.html")) {
-        link.classList.add("activo");
-      }
-    });
+      <a class="quick-card" href="cadenas.html">
+        <div class="quick-card__top">
+          <span class="quick-chip">Cadenas</span>
+          <i class="fa-solid fa-link"></i>
+        </div>
+        <h4>Cadenas</h4>
+        <p>Capas, colgantes y detalles finos.</p>
+      </a>
 
-    window.addEventListener("scroll", function () {
-      const header = document.querySelector("header");
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-  </script>
+      <a class="quick-card" href="pulseras.html">
+        <div class="quick-card__top">
+          <span class="quick-chip">Pulseras</span>
+          <i class="fa-regular fa-circle"></i>
+        </div>
+        <h4>Pulseras</h4>
+        <p>Toque elegante para todos los días.</p>
+      </a>
+    </div>
+  </section>
 
-  <script>
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".carousel-slide");
-    const dots = document.querySelectorAll(".dot");
-    const next = document.querySelector(".next");
-    const prev = document.querySelector(".prev");
+  <!-- PROMO -->
+  <section class="home-section">
+    <div class="promo-split promo-split--big">
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.display = i === index ? "block" : "none";
-        dots[i].classList.toggle("active", i === index);
-      });
-    }
+      <div class="promo-split__img promo-zoom">
+        <img class="zoomable"
+             src="img/MODO DESCUENTO.png.png"
+             alt="Modo descuento ECLIPSE"
+             data-zoom-src="img/MODO DESCUENTO.png.png" />
 
-    function nextSlide() {
-      slideIndex = (slideIndex + 1) % slides.length;
-      showSlide(slideIndex);
-    }
+        <button class="zoom-btn" type="button" data-zoom-btn>
+          <i class="fa-solid fa-magnifying-glass-plus"></i> Ver en grande
+        </button>
+      </div>
 
-    function prevSlide() {
-      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-      showSlide(slideIndex);
-    }
+      <div class="promo-split__content">
+        <h3 class="home-section__title">Modo descuento</h3>
+        <p class="home-section__sub">
+          Aprovecha los drops y arma tu set ideal. Si quieres un pedido personalizado, te lo armamos por WhatsApp.
+        </p>
 
-    next.addEventListener("click", nextSlide);
-    prev.addEventListener("click", prevSlide);
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        slideIndex = i;
-        showSlide(slideIndex);
-      });
-    });
+        <div class="promo-actions">
+          <a class="btn-home btn-home--primary" href="NEW.html">Comprar ahora</a>
+          <a class="btn-home btn-home--ghost" target="_blank" rel="noopener" href="https://wa.me/573003578712">Hablar por WhatsApp</a>
+        </div>
 
-    showSlide(slideIndex);
-    setInterval(nextSlide, 3000);
-  </script>
+        <div class="mini-benefits">
+          <div class="mini-benefit"><i class="fa-solid fa-shield-heart"></i><span>Compra segura</span></div>
+          <div class="mini-benefit"><i class="fa-solid fa-bag-shopping"></i><span>Carrito + WhatsApp</span></div>
+          <div class="mini-benefit"><i class="fa-solid fa-sparkles"></i><span>Detalles premium</span></div>
+        </div>
+
+        <p class="fineprint-home">Tip: Toca “Ver en grande” para leer todo perfecto.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAVORITOS DEL MOMENTO -->
+  <section class="home-section">
+    <div class="home-section__head">
+      <h3 class="home-section__title">Favoritos del momento</h3>
+    </div>
+
+    <div class="moment-slider" id="momentSlider">
+      <div class="moment-track" id="momentTrack"></div>
+
+      <button class="moment-nav moment-nav--prev" type="button" aria-label="Anterior" id="momentPrev">❮</button>
+      <button class="moment-nav moment-nav--next" type="button" aria-label="Siguiente" id="momentNext">❯</button>
+
+      <div class="moment-dots" id="momentDots"></div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="home-final-cta">
+    <div class="home-final-cta__inner">
+      <h3>¿Te armamos el set perfecto?</h3>
+      <p>Escríbenos por WhatsApp y te recomendamos combinaciones según tu estilo.</p>
+      <a class="btn-home btn-home--primary" target="_blank" rel="noopener" href="https://wa.me/573003578712">
+        <i class="fa-brands fa-whatsapp"></i> Hablar ahora
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/573003578712" target="_blank" rel="noopener" class="whatsapp-float">
+  <img src="img/whatsapp-icon.png" alt="WhatsApp" />
+</a>
+
+<!-- Botón flotante del carrito -->
 <a href="carrito.html" class="carrito-float" title="Ver carrito">
   <i class="fas fa-shopping-cart"></i>
   <span id="contador-carrito">0</span>
 </a>
 
+<!-- ✅ MODAL ZOOM (FUERA DEL SCRIPT) -->
+<div class="zoom-modal" id="zoomModal" aria-hidden="true">
+  <div class="zoom-modal__overlay" data-zoom-close></div>
+  <div class="zoom-modal__panel" role="dialog" aria-modal="true">
+    <button class="zoom-modal__close" type="button" data-zoom-close aria-label="Cerrar">×</button>
+    <img id="zoomModalImg" src="" alt="Vista ampliada" />
+  </div>
+</div>
+
 <script>
+  /* ===========================
+     MENU + HEADER SCROLL
+  ============================ */
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".link-menu").forEach(link => {
+    if (link.getAttribute("href") === currentPage || (currentPage === "" && link.getAttribute("href") === "index.html")) {
+      link.classList.add("activo");
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  });
+
+  /* ===========================
+     CARRUSEL (FIX)
+     - Maneja display con JS y clase active
+  ============================ */
+  let slideIndex = 0;
+  const slides = Array.from(document.querySelectorAll(".home-carousel .carousel-slide"));
+  const dots = Array.from(document.querySelectorAll(".home-carousel .dot"));
+  const nextBtn = document.querySelector(".home-carousel .next");
+  const prevBtn = document.querySelector(".home-carousel .prev");
+
+  function showSlide(index) {
+    slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  }
+
+  function nextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+  }
+  function prevSlide() {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
+  }
+
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+  dots.forEach((dot, i) => dot.addEventListener("click", () => {
+    slideIndex = i;
+    showSlide(slideIndex);
+  }));
+
+  showSlide(slideIndex);
+  setInterval(nextSlide, 3500);
+
+  /* ===========================
+     CONTADOR CARRITO
+  ============================ */
   function actualizarContadorCarrito() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    const totalItems = carrito.reduce((acc, item) => acc + (item.cantidad || 0), 0);
     document.querySelectorAll("#contador-carrito, .contador-carrito").forEach(el => {
       el.textContent = totalItems;
       el.classList.remove("pop");
@@ -144,8 +280,260 @@
       el.classList.add("pop");
     });
   }
-
   document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+
+  /* ===========================
+     ZOOM MODAL (FIX)
+  ============================ */
+  const zoomModal = document.getElementById("zoomModal");
+  const zoomModalImg = document.getElementById("zoomModalImg");
+
+  function openZoom(src) {
+    if (!src) return;
+    zoomModalImg.src = src;
+    zoomModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeZoom() {
+    zoomModal.setAttribute("aria-hidden", "true");
+    zoomModalImg.src = "";
+    document.body.classList.remove("no-scroll");
+  }
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-zoom-btn]");
+    const img = e.target.closest(".zoomable");
+
+    if (btn) {
+      const wrap = btn.closest(".promo-zoom");
+      const im = wrap ? wrap.querySelector(".zoomable") : null;
+      const src = im?.getAttribute("data-zoom-src") || im?.getAttribute("src");
+      openZoom(src);
+    }
+
+    if (img) {
+      const src = img.getAttribute("data-zoom-src") || img.getAttribute("src");
+      openZoom(src);
+    }
+
+    if (e.target.closest("[data-zoom-close]")) closeZoom();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeZoom();
+  });
+
+  /* ===========================
+     FAVORITOS DEL MOMENTO (FIX)
+     - Saca precio del onclick addToCart si el <p> no sirve (earcuffs)
+  ============================ */
+  const PAGES = ["NEW.html","aretes.html","anillos.html","cadenas.html","earcuffs.html","playa.html","pulseras.html"];
+
+  function uniqueByName(arr) {
+    const map = new Map();
+    arr.forEach(p => { if (p?.nombre && !map.has(p.nombre)) map.set(p.nombre, p); });
+    return Array.from(map.values());
+  }
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i=a.length-1;i>0;i--) {
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+  function pickN(arr, n) { return shuffle(arr).slice(0, n); }
+
+  function extractPriceFromOnclick(onclickStr) {
+    // addToCart('Nombre', 26000, 'ruta')
+    if (!onclickStr) return 0;
+    const m = onclickStr.match(/addToCart\s*\(\s*['"`][\s\S]*?['"`]\s*,\s*(\d+)\s*,/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+
+function parseProductsFromDoc(doc) {
+  const cards = Array.from(doc.querySelectorAll(".producto"));
+
+  return cards.map(card => {
+    const img = card.querySelector("img");
+    const h3 = card.querySelector("h3");
+    if (!img || !h3) return null;
+
+    const nombre = h3.textContent.trim();
+    const imagen = img.getAttribute("src") || "";
+
+    // 1) Precio final (Earcuffs / descuentos)
+    let precio = 0;
+    const precioFinalEl =
+      card.querySelector(".precio-final") ||
+      card.querySelector(".precio-container .precio-final");
+
+    if (precioFinalEl) {
+      precio = parseInt((precioFinalEl.textContent || "").replace(/\D/g, ""), 10) || 0;
+    }
+
+    // 2) Fallback: <p>$...</p> (productos normales)
+    if (!precio) {
+      const p = card.querySelector("p");
+      precio = p ? (parseInt((p.textContent || "").replace(/\D/g, ""), 10) || 0) : 0;
+    }
+
+    // 3) Fallback final: onclick addToCart('...', 14400, '...')
+    if (!precio) {
+      const btnAny = Array.from(card.querySelectorAll("button[onclick]"))
+        .find(b => (b.getAttribute("onclick") || "").includes("addToCart("));
+
+      if (btnAny) {
+        const onclickStr = btnAny.getAttribute("onclick") || "";
+        const m = onclickStr.match(/addToCart\s*\(\s*['"`][\s\S]*?['"`]\s*,\s*(\d+)\s*,/);
+        if (m) precio = parseInt(m[1], 10) || 0;
+      }
+    }
+
+    return { nombre, precio, imagen };
+  }).filter(Boolean);
+}
+
+
+  async function buildGlobalCatalog() {
+    const cached = JSON.parse(localStorage.getItem("eclipse_catalog") || "null");
+    if (Array.isArray(cached) && cached.length >= 12) return cached;
+
+    try {
+      const htmls = await Promise.all(PAGES.map(async (url) => {
+        const r = await fetch(url, { cache: "no-store" });
+        if (!r.ok) throw new Error("fetch failed");
+        return await r.text();
+      }));
+
+      const all = [];
+      htmls.forEach(txt => {
+        const doc = new DOMParser().parseFromString(txt, "text/html");
+        all.push(...parseProductsFromDoc(doc));
+      });
+
+      const catalog = uniqueByName(all);
+      if (catalog.length) localStorage.setItem("eclipse_catalog", JSON.stringify(catalog));
+      return catalog;
+    } catch (e) {
+      const here = parseProductsFromDoc(document);
+      const wish = JSON.parse(localStorage.getItem("wishlist") || "[]")
+        .map(x => ({ nombre: x.nombre, precio: x.precio || 0, imagen: x.imagen || "" }))
+        .filter(x => x.nombre && x.imagen);
+
+      const fallback = uniqueByName([...here, ...wish]);
+      if (fallback.length) localStorage.setItem("eclipse_catalog", JSON.stringify(fallback));
+      return fallback;
+    }
+  }
+
+  function moneyCOP(n) {
+    try { return "$" + Number(n || 0).toLocaleString("es-CO"); }
+    catch { return "$" + (n || 0); }
+  }
+
+  function renderMomentSlide(products) {
+    const track = document.getElementById("momentTrack");
+    if (!track) return;
+
+    track.innerHTML = products.map(p => `
+      <div class="moment-card">
+        <div class="moment-card__img">
+          <img src="${p.imagen}" alt="${p.nombre}">
+        </div>
+        <div class="moment-card__info">
+          <h4>${p.nombre}</h4>
+          <div class="moment-card__price">${moneyCOP(p.precio)}</div>
+          <button class="btn-home btn-home--primary moment-add"
+            type="button"
+            onclick="addToCart('${p.nombre.replace(/'/g, "\\'")}', ${p.precio || 0}, '${p.imagen.replace(/'/g, "\\'")}')">
+            Agregar
+          </button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function renderDots(count, activeIndex = 0) {
+    const dots = document.getElementById("momentDots");
+    if (!dots) return;
+
+    dots.innerHTML = Array.from({ length: count }).map((_, i) => `
+      <button class="moment-dot ${i === activeIndex ? "active" : ""}" type="button" data-dot="${i}" aria-label="Slide ${i+1}"></button>
+    `).join("");
+  }
+
+  async function initMomentSlider() {
+    const slider = document.getElementById("momentSlider");
+    if (!slider) return;
+
+    const catalog = await buildGlobalCatalog();
+    const pool = catalog.length ? catalog : [];
+    if (!pool.length) return;
+
+    const slides = [];
+    const totalSlides = Math.max(6, Math.min(12, Math.ceil(pool.length / 4)));
+    for (let i = 0; i < totalSlides; i++) slides.push(pickN(pool, 4));
+
+    let idx = 0;
+    renderMomentSlide(slides[idx]);
+    renderDots(slides.length, idx);
+
+    const doNext = () => {
+      slider.classList.add("is-swapping");
+      setTimeout(() => {
+        idx = (idx + 1) % slides.length;
+        renderMomentSlide(slides[idx]);
+        renderDots(slides.length, idx);
+        slider.classList.remove("is-swapping");
+      }, 220);
+    };
+
+    const doPrev = () => {
+      slider.classList.add("is-swapping");
+      setTimeout(() => {
+        idx = (idx - 1 + slides.length) % slides.length;
+        renderMomentSlide(slides[idx]);
+        renderDots(slides.length, idx);
+        slider.classList.remove("is-swapping");
+      }, 220);
+    };
+
+    let interval = setInterval(doNext, 3000);
+
+    document.getElementById("momentNext")?.addEventListener("click", () => {
+      clearInterval(interval);
+      doNext();
+      interval = setInterval(doNext, 3000);
+    });
+
+    document.getElementById("momentPrev")?.addEventListener("click", () => {
+      clearInterval(interval);
+      doPrev();
+      interval = setInterval(doNext, 3000);
+    });
+
+    document.getElementById("momentDots")?.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-dot]");
+      if (!b) return;
+      clearInterval(interval);
+      const n = parseInt(b.dataset.dot, 10);
+      if (!Number.isFinite(n)) return;
+
+      slider.classList.add("is-swapping");
+      setTimeout(() => {
+        idx = n;
+        renderMomentSlide(slides[idx]);
+        renderDots(slides.length, idx);
+        slider.classList.remove("is-swapping");
+      }, 220);
+
+      interval = setInterval(doNext, 3000);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initMomentSlider);
 </script>
 
 </body>
