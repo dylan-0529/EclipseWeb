@@ -2907,3 +2907,39 @@ header.scrolled {
 .home-carousel .next {
   display: none !important;
 }
+/* =========================================
+   SETS DOBLES — mostrar imagen completa (sin hueco)
+   ========================================= */
+
+.producto-set.doble .producto-set-imagen{
+  height: auto !important;
+  min-height: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.92);
+}
+
+.producto-set.doble .producto-set-imagen img{
+  width: 100%;
+  height: auto !important;          /* 👈 clave */
+  max-height: 520px;                /* ajusta si quieres */
+  object-fit: contain !important;   /* 👈 muestra completa */
+  display: block;
+}
+
+/* Para que el badge NEW no se mueva raro */
+.producto-set.doble .producto-set-imagen .etiqueta-nuevo{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+}
+
+/* Asegura que el contenedor permita el badge */
+.producto-set.doble .producto-set-imagen{
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 22px; /* si ya tienes radius, esto no molesta */
+  border-bottom-left-radius: 22px;
+}
