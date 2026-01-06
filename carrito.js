@@ -10,6 +10,27 @@
 
   const WA_NUMBER = "573003578712"; // tu número
 
+  // =========================================================
+  // DESCUENTO TEMPORAL (SEMANA) — -30%
+  // Cambia a false cuando termine la promo/semana
+  // =========================================================
+  const DISCOUNT_ACTIVE = true;
+  const DISCOUNT_RATE = 0.30; // 30%
+
+  function subtotal(cart) {
+    return cartTotal(cart);
+  }
+
+  function discountAmount(sub) {
+    return DISCOUNT_ACTIVE ? Math.round((Number(sub) || 0) * DISCOUNT_RATE) : 0;
+  }
+
+  function finalTotal(cart) {
+    const sub = subtotal(cart);
+    return Math.max(0, sub - discountAmount(sub));
+  }
+
+
   const $ = (sel, root = document) => root.querySelector(sel);
 
   function getCart() {
@@ -85,7 +106,11 @@
     if (!host) return;
 
     const cart = getCart();
-    const total = cartTotal(cart);
+    const sub = subtotal(cart);
+    const descuento = discountAmount(sub);
+    const total = Math.max(0, sub - descuento);
+
+
     const info = getCheckoutInfo();
 
     if (!cart.length) {
@@ -150,10 +175,26 @@
               ${rows}
             </div>
 
-            <div class="cart-total">
-              <span>Total</span>
-              <strong>${formatCOP(total)}</strong>
+              <div class="cart-total cart-total--breakdown">
+              <div class="cart-total__row">
+                <span>Subtotal</span>
+                <strong>${formatCOP(sub)}</strong>
+              </div>
+
+              ${DISCOUNT_ACTIVE ? `
+                <div class="cart-total__row cart-total__row--discount">
+                  <span>Descuento(-30%)</span>
+                  <strong>- ${formatCOP(descuento)}</strong>
+                </div>
+              ` : ""}
+
+              <div class="cart-total__row cart-total__row--final">
+                <span>Total</span>
+                <strong>${formatCOP(total)}</strong>
+              </div>
             </div>
+
+
 
             <div class="cart-actions">
               <button class="btn-checkout btn-soft" type="button" id="btn-empty">
@@ -283,7 +324,11 @@
   }
 
   function buildWhatsAppMessage(cart, info) {
-    const total = cartTotal(cart);
+    const sub = subtotal(cart);
+    const descuento = discountAmount(sub);
+    const total = Math.max(0, sub - descuento);
+
+
 
     const lines = [];
     lines.push("✦ *Pedido E C L I P S E* ✦");
@@ -297,7 +342,15 @@
     });
 
     lines.push("");
+    lines.push(`✱ *Subtotal:* ${formatCOP(sub)}`);
+
+    if (DISCOUNT_ACTIVE) {
+      lines.push(`✱ *Descuento (-30%):* - ${formatCOP(descuento)}`);
+    }
+
     lines.push(`✱ *Total:* ${formatCOP(total)}`);
+
+
     lines.push("");
     lines.push("*Datos del cliente*");
     lines.push(`✓ Nombre completo: ${info.nombre || "-"}`);

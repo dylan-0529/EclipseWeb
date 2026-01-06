@@ -2943,3 +2943,77 @@ header.scrolled {
   border-top-left-radius: 22px; /* si ya tienes radius, esto no molesta */
   border-bottom-left-radius: 22px;
 }
+/* =========================
+   Checkout total — arreglo layout (Subtotal/Descuento/Total)
+   ========================= */
+
+.cart-total--breakdown{
+  display: grid;
+  gap: 12px;
+}
+
+/* cada fila: 2 columnas (texto / valor) */
+.cart-total__row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+
+/* texto izquierda: no se parte raro */
+.cart-total__row > span{
+  line-height: 1.25;
+  color: rgba(43,43,43,0.78);
+}
+
+/* valor derecha: siempre alineado a la derecha */
+.cart-total__row > strong{
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* descuento: se ve "verde pro" y limpio */
+.cart-total__row--discount{
+  padding-top: 10px;
+  border-top: 1px dashed rgba(0,0,0,0.12);
+  color: rgba(255, 0, 0, 0.78);
+  font-weight: 700;
+}
+
+/* el label del descuento: mejor jerarquía */
+.cart-total__row--discount > span{
+  color: rgba(255, 0, 0, 0.78);
+  font-weight: 600;
+}
+
+/* total final más fuerte */
+.cart-total__row--final{
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.10);
+}
+
+.cart-total__row--final > span{
+  color: rgba(0,0,0,0.78);
+  font-weight: 600;
+}
+
+.cart-total__row--final > strong{
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+/* móvil: aún más compacto */
+@media (max-width: 520px){
+  .cart-total__row{
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+  .cart-total__row > span{
+    font-size: 13px;
+  }
+}
+
+.resaltado{
+  font-weight: 600;
+  letter-spacing: 1px;
+}
