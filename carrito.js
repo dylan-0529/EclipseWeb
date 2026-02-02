@@ -14,7 +14,7 @@
   // DESCUENTO TEMPORAL (SEMANA) — -30%
   // Cambia a false cuando termine la promo/semana
   // =========================================================
-  const DISCOUNT_ACTIVE = true;
+  const DISCOUNT_ACTIVE = false;
   const DISCOUNT_RATE = 0.30; // 30%
 
   function subtotal(cart) {
